@@ -84,6 +84,8 @@ public class QueryServlet extends HttpServlet {
 				m.setMedizin_distribution((String)medizin_ziji.get(5));
 				m.setMedizin_collectionProcessing((String)medizin_ziji.get(6));
 				m.setMedizin_plantSeed((String)medizin_ziji.get(14));
+				m.setMedizin_plantJuvenile((String)medizin_ziji.get(15));
+				m.setMedizin_plantAdult((String)medizin_ziji.get(16));
 				list.add(m);
 				System.out.println(m.getMedizin_plantSeed());
 			}

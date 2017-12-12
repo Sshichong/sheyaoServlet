@@ -2,6 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@page import="java.sql.*" %>
+    <%
+    request.setCharacterEncoding("utf-8");
+    response.setCharacterEncoding("utf-8");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +37,7 @@
 			});
 		});
 </script>
-<h2>
+
 <!--//end-smoth-scrolling-->
 </head>
 <body>
@@ -84,8 +88,52 @@
 					<div class="clearfix">
 					<div class=neirong>
 	<div class="xinxitianjia" >
-		<form action="InsertSyServlet" method="post" >
-			<table >
+	<a href="sheyao.jsp">完成</a><br><br>
+		<form action="InsertSyServlet" method="post" enctype="multipart/form-data">
+		<div>
+		<div id="zhengming">
+		正名：<input type="text" size="25" name="zhengming"/>
+		</div>
+		<div id="yiming" style="padding-top:10px">
+		异名：<input type="text" size="25" name="yiming"/>
+		</div>
+		<div id="yaoxing" style="padding-top:10px">
+		药性：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="yaoxing" >
+							<option value="yinyao">阴药</option>
+							<option value="yangyao">阳药</option>
+						</select>
+		</div>
+		<div id="leibie" style="padding-top:10px">
+		植物类别：<select name="leibie">
+							<option value="2">菌类植物</option>
+							<option value="3">地衣类植物</option>
+							<option value="5">蕨类类植物</option>
+							<option value="6">裸子类植物</option>
+							<option value="7">双子叶类植物</option>
+							</select>
+		</div>
+		<div id="yuanzhiwujieshao" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px">原植物介绍：</div><textarea rows="5" cols="50" name="yuanzhiwujieshao"></textarea>
+		</div>
+		<div id="shengjingfenbu" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px">生境分布：</div><textarea rows="5" cols="50" name="shengjingfenbu"></textarea>
+		</div>
+		<div id="caijijiagong" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px">采集加工：</div><textarea rows="5" cols="50" name="caijijiagong"></textarea>
+		</div>
+										<div>
+											<div id="tu1" style="padding-top: 10px">
+												植物种子图片：<input type="file" name="new_image" id="doc" value=""
+													onchange="javascript:setImagePreview();" />
+												<div id="localImag">
+													<img id="preview" width=-1 height=-1 style="diplay: none" />
+												</div>
+											</div>
+										</div>
+										<input type="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重置" />
+		</div>
+		
+			<!-- <table >
 				<tr><td>正名</td><td><input name="zhengming"></td></tr>
 				<tr><td>异名</td><td><input name="yiming"></td></tr>
 				<tr><td>全拼</td><td><input name="quanpin"></td></tr>
@@ -109,10 +157,10 @@
 				<tr><td>生境分布</td><td><input name="shengjingfenbu" type="text"></td></tr>
 				<tr><td>采集加工</td><td><input name="caijijiagong" type="text"></td></tr>
 				<tr><td></td><td><input type="button" id="add" value="添加一条"/><td></tr>
-				<!-- <tr><td>奢药药方</td><td> <textarea rows="10" cols="21" name="sheyaoyaofang"></textarea> </td></tr> -->
+				<tr><td>奢药药方</td><td> <textarea rows="10" cols="21" name="sheyaoyaofang"></textarea> </td></tr>
 				<tr><td>奢药药方</td><td id="td"><input type="text" name="yaofang" /><br/></td></tr>
 				<tr><td><input type="submit" value="添加" /></td></tr>
-			</table>
+			</table> -->
 		</form>
 	</div>
 </div>
@@ -125,32 +173,7 @@
 			<div class="clearfix"> </div>				
 		</div>
 	</div>
-<!-- <div class=neirong>
-	<div class="xinxitianjia" style="float:right">
-		<form action="Sheyao_tianjia" method="post" >
-			<table>
-				<tr><td>正名</td><td><input name="zhengming"></td></tr>
-				<tr><td>异名</td><td><input name="yiming"></td></tr>
-				<tr><td>全拼</td><td><input name="quanpin"></td></tr>
-				<tr><td>简拼</td><td><input name="jianpin"></td></tr>
-				<tr><td>药性</td>
-					<td><select name="yaoxing">
-							<option value="yinyao">阴药</option>
-							<option value="yangyao">阳药</option>
-						</select></td></tr>
-				<tr><td>类别</td>
-						<td><select name="leibie">
-							<option value="junleizhiwu">菌类植物</option>
-							<option value="diyitaixianleizhiwu">地衣苔藓类植物</option>
-							</select></td></tr>
-				<tr><td>原植物介绍</td><td><input name="yuanzhiwujieshao"></td></tr>
-				<tr><td>生境分布</td><td><input name="shengjingfenbu"></td></tr>
-				<tr><td>采集加工</td><td><input name="caijijiagong"></td></tr>
-				<tr><td>奢药药方</td><td></td></tr>不会
-			</table>
-		</form>
-	</div>
-</div> -->
+
 <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -169,5 +192,39 @@
     
     
     </script>
+    <script> 
+	function setImagePreview() {
+		var docObj = document.getElementById("doc");
+		var imgObjPreview = document.getElementById("preview");
+		if (docObj.files && docObj.files[0]) {
+			//火狐下，直接设img属性 
+			imgObjPreview.style.display = 'block';
+			imgObjPreview.style.width = '100px';
+			imgObjPreview.style.height = 'inherit';
+			//imgObjPreview.src = docObj.files[0].getAsDataURL(); 
+			//火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式 
+			imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+		} else {
+			//IE下，使用滤镜 
+			docObj.select();
+			var imgSrc = document.selection.createRange().text;
+			var localImagId = document.getElementById("localImag");
+			//必须设置初始大小 
+			localImagId.style.width = "100px";
+			localImagId.style.height = "80px";
+			//图片异常的捕捉，防止用户修改后缀来伪造图片 
+			try {
+				localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+				localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+			} catch (e) {
+				alert("您上传的图片格式不正确，请重新选择!");
+				return false;
+			}
+			imgObjPreview.style.display = 'none';
+			document.selection.empty();
+		}
+		return true;
+	}
+</script> 
 </body>
 </html>

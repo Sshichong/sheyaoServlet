@@ -207,7 +207,7 @@ for(int i=0;i<vector.size();i++){
 				<form action="QueryServlet" method="post">
 				<div align="center">
 				搜索畲药：<input type="text" name="select" placeholder="请输入关键字"/><input type="submit" value="搜索"/>
-				<input type="button" name="addBingzheng" id = "addBingzheng"  onclick="window.location.href = 'sheyao_tianjia.jsp'" value="病症添加" />
+				<input type="button" name="addBingzheng" id = "addBingzheng"  onclick="window.location.href = 'sheyao_tianjia.jsp'" value="畲药添加" />
 				</div>
 				</form>
 				<!-- <a href="sheyao_tianjia.jsp" class="pos_abs1" >畲药添加</a> -->
@@ -350,18 +350,18 @@ for(int i=0;i<vector.size();i++){
 						<h2>标志图片</h2>
 						<br>
 						<div style="background: #F0F0F0; width: 210px; height: 130px">
-							<img alt="111"
-								<%-- src="C:\Program Files\Java\apache-tomcat-8.0.45\webapps\myFristServlet\\upload\"
-								+<%=m.getMedizin_plantSeed()%> width="400px" height="300px" --%>>
-								<img  src=basePath+<%=m.getMedizin_plantSeed() %>
+							
+								<img  src="images/<%=m.getMedizin_plantSeed() %>"
 								width="210px" height="130px">
 						</div>
 						<br>
 						<h2>图册</h2>
 						<div style="background: #F0F0F0; width: 150px; height: 150px">
+						<img width="150px"  height="150px" src="images/<%=m.getMedizin_plantJuvenile()%>" >
 						</div>
 						<br>
 						<div style="background: #F0F0F0; width: 150px; height: 150px">
+						<img alt="222" src="images/<%=m.getMedizin_plantAdult()%>" width="150px"  height="150px">
 						</div>
 
 					</div>
