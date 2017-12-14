@@ -121,6 +121,23 @@
 		<div id="caijijiagong" style="padding-top:10px">
 		<div style="text-align="center;padding-top:10px">采集加工：</div><textarea rows="5" cols="50" name="caijijiagong"></textarea>
 		</div>
+		
+		<div id="zhuyishixiang" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px">注意事项：</div><textarea rows="5" cols="50" name="zhuyishixiang"></textarea>
+		</div>
+		<div id="huaxuechengfen" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px">化学成分（分号隔开）：</div><textarea rows="5" cols="50" name="huaxuechengfen"></textarea>
+		</div>
+		<div id="huaxuechengfencankaowenxian" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px">化学成分参考文献（分号隔开）：</div><textarea rows="5" cols="50" name="huaxuechengfencankaowenxian"></textarea>
+		</div>
+		<div id="xiandailinchuangyanjiucankaowenxian" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px">现代临床研究参考文献（分号隔开）：</div><textarea rows="5" cols="50" name="xiandailinchuangyanjiucankaowenxian"></textarea>
+		</div>
+		<div id="yaolicankaowenxian" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px">药理参考文献（分号隔开）：</div><textarea rows="5" cols="50" name="yaolicankaowenxian"></textarea>
+		</div>
+		
 										<div>
 											<div id="tu1" style="padding-top: 10px">
 												植物种子图片：<input type="file" name="new_image" id="doc" value=""

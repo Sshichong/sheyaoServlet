@@ -177,7 +177,7 @@ font-size:15px;
 			<div
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main about-main">
 				<div class="about">
-
+				<img alt="111" src="images/1111.png" height="100px" >
 					<div class="clearfix"></div>
 				</div>
 				<%--  <%
@@ -205,8 +205,8 @@ for(int i=0;i<vector.size();i++){
 				<div class="services">
 				<h1>畲药</h1>
 				<form action="QueryServlet" method="post">
-				<div align="center">
-				搜索畲药：<input type="text" name="select" placeholder="请输入关键字"/><input type="submit" value="搜索"/>
+				<div align="right">
+				搜索畲药：<input type="text" name="select" placeholder="请输入正名，异名，全拼或简拼" size="40"/><input type="submit" value="搜索"/>
 				<input type="button" name="addBingzheng" id = "addBingzheng"  onclick="window.location.href = 'sheyao_tianjia.jsp'" value="畲药添加" />
 				</div>
 				</form>
@@ -218,6 +218,7 @@ for(int i=0;i<vector.size();i++){
 						<ul>
 
 							<%
+							
 							DataProcess dataProcess = new DataProcess();
 							String sql = "select * from medizin";
 							Vector vector = dataProcess.getData(sql);

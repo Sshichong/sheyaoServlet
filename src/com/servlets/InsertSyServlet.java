@@ -109,6 +109,12 @@ public class InsertSyServlet extends HttpServlet {
 		String yuanzhiwujieshao = new String(smartupload.getRequest().getParameter("yuanzhiwujieshao").trim().getBytes(),"utf-8");
 		String shengjingfenbu = new String(smartupload.getRequest().getParameter("shengjingfenbu").trim().getBytes(),"utf-8");
 		String caijijiagong = new String(smartupload.getRequest().getParameter("caijijiagong").trim().getBytes(),"utf-8");
+		String zhuyishixiang = new String(smartupload.getRequest().getParameter("zhuyishixiang").trim().getBytes(),"utf-8");
+		String huaxuechengfen = new String(smartupload.getRequest().getParameter("huaxuechengfen").trim().getBytes(),"utf-8");
+		String huaxuechengfencankaowenxian = new String(smartupload.getRequest().getParameter("huaxuechengfencankaowenxian").trim().getBytes(),"utf-8");
+		String xiandailinchuangyanjiucankaowenxian = new String(smartupload.getRequest().getParameter("xiandailinchuangyanjiucankaowenxian").trim().getBytes(),"utf-8");
+		String yaolicankaowenxian = new String(smartupload.getRequest().getParameter("yaolicankaowenxian").trim().getBytes(),"utf-8");
+		
 		
 		System.out.println(zhengming);
 		System.out.println(yiming);
@@ -132,7 +138,7 @@ public class InsertSyServlet extends HttpServlet {
 			yaoxing="—Ù“©";
 		}
 		
-		String sql ="insert into medizin (Medizin_name,Medizin_anotherName,Medizin_property,Medizin_introduce,Medizin_distribution,Medizin_planCategory,Medizin_plantSeed,Medizin_CollectionProcessing,Medizin_forSelect) values('"+zhengming+"','"+yiming+"','"+yaoxing+"','"+yuanzhiwujieshao+"','"+shengjingfenbu+"','"+leibie+"','"+lj+"','"+caijijiagong+"','"+forSelect+"')";
+		String sql ="insert into medizin (Medizin_name,Medizin_anotherName,Medizin_property,Medizin_introduce,Medizin_distribution,Medizin_CollectionProcessing,Medizin_disease,Medizin_precautions,Medizin_ChemicalComponent,Medizin_ReferencesChemical,Medizin_ReferencesClinic,Medizin_ReferencesPharmacology,Medizin_planCategory,Medizin_plantSeed,Medizin_plantJuvenile,Medizin_plantAdult,Medizin_plantWilting,Medizin_plantImg,Medizin_forSelect) values('"+zhengming+"','"+yiming+"','"+yaoxing+"','"+yuanzhiwujieshao+"','"+shengjingfenbu+"','"+caijijiagong+"','1','"+zhuyishixiang+"','"+huaxuechengfen+"','"+huaxuechengfencankaowenxian+"','"+xiandailinchuangyanjiucankaowenxian+"','"+yaolicankaowenxian+"','"+leibie+"','"+lj+"','"+lj+"','"+lj+"','"+lj+"','"+lj+"','"+forSelect+"')";
 		
 		System.out.println(zhengming+yiming+yaoxing+leibie+yuanzhiwujieshao+shengjingfenbu+caijijiagong+forSelect+lj);
 		int num=db.update(sql);
