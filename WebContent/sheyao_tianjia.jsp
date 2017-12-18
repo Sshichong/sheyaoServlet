@@ -90,7 +90,7 @@
 	<div class="xinxitianjia" >
 	<a href="sheyao.jsp">完成</a><br><br>
 		<form action="InsertSyServlet" method="post" enctype="multipart/form-data">
-		<div>
+		<div style="float:left;margin-left:150px">
 		<div id="zhengming">
 		正名：<input type="text" size="25" name="zhengming"/>
 		</div>
@@ -156,6 +156,9 @@
 											</div>
 										</div>
 										<input type="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重置" />
+		</div>
+		<div style="float:left">
+		<img alt="sheyaotianjia" src="picture/sheyaotianjia.png" style="margin-left:250px">
 		</div>
 		
 			<!-- <table >
