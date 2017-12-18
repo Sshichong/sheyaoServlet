@@ -48,9 +48,10 @@ public class QueryServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//接收数据
 		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		String selectName=request.getParameter("select");
 		
-		System.out.println(selectName);
+		
 		//验证数据
 		//没有值
 		if(selectName==null||selectName.equals("")){
@@ -59,7 +60,8 @@ public class QueryServlet extends HttpServlet {
 		}
 		
 		//转码
-		//selectName = new String(selectName.getBytes("iso-8859-1"),"utf-8");<!-- 此句一出，selectName与数据库匹配成乱码 -->
+		selectName = new String(selectName.getBytes("iso-8859-1"),"utf-8");/*<!-- 此句一出，selectName与数据库匹配成乱码 -->*/
+		System.out.println(selectName);
 		DataProcess data=new DataProcess();
 		String sql ="select * from medizin where Medizin_name like '%"+selectName+"%' or Medizin_forSelect like '%"+selectName+"%'or Medizin_anotherName like '%"+selectName+"%'";
 		Vector medizin=new Vector();
@@ -87,7 +89,7 @@ public class QueryServlet extends HttpServlet {
 				m.setMedizin_plantJuvenile((String)medizin_ziji.get(15));
 				m.setMedizin_plantAdult((String)medizin_ziji.get(16));
 				list.add(m);
-				System.out.println(m.getMedizin_plantSeed());
+				//System.out.println(m.getMedizin_plantSeed());
 			}
 			request.setAttribute("duotiaojilu", list);
 			RequestDispatcher dispatcher =request.getRequestDispatcher("sheyao.jsp");

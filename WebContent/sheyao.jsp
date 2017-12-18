@@ -8,13 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%
-    	String path = request.getContextPath();
-    
-    	String basePath = request.getScheme() + "://" + request.getServerName()
-    				+":" + request.getServerPort() + path + "/";
-    	
-    %>
+
 <title>畲药</title>
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet"
 	media="all">
@@ -218,7 +212,8 @@ for(int i=0;i<vector.size();i++){
 						<ul>
 
 							<%
-							
+							request.setCharacterEncoding("utf-8");
+							response.setCharacterEncoding("utf-8");
 							DataProcess dataProcess = new DataProcess();
 							String sql = "select * from medizin";
 							Vector vector = dataProcess.getData(sql);
@@ -352,17 +347,17 @@ for(int i=0;i<vector.size();i++){
 						<br>
 						<div style="background: #F0F0F0; width: 210px; height: 130px">
 							
-								<img  src="images/<%=m.getMedizin_plantSeed() %>"
+								<img  src="picture/<%=m.getMedizin_plantSeed() %>"
 								width="210px" height="130px">
 						</div>
 						<br>
 						<h2>图册</h2>
 						<div style="background: #F0F0F0; width: 150px; height: 150px">
-						<img width="150px"  height="150px" src="images/<%=m.getMedizin_plantJuvenile()%>" >
+						<img width="150px"  height="150px" src="picture/<%=m.getMedizin_plantJuvenile()%>" >
 						</div>
 						<br>
 						<div style="background: #F0F0F0; width: 150px; height: 150px">
-						<img alt="222" src="images/<%=m.getMedizin_plantAdult()%>" width="150px"  height="150px">
+						<img alt="222" src="picture/<%=m.getMedizin_plantAdult()%>" width="150px"  height="150px">
 						</div>
 
 					</div>

@@ -43,6 +43,8 @@ public class Select_bingzheng extends HttpServlet {
 		String select_name = request.getParameter("select_chaxunbingzheng");
 		String select_id = request.getParameter("select_id");
 		
+		System.out.println(select_name);
+		
 		Message message = new Message();//创建一个提示类
 		Bingzheng bz = new Bingzheng();//创建一个病症类型
 		
