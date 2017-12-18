@@ -95,7 +95,7 @@
 		正名：<input type="text" size="25" name="zhengming"/>
 		</div>
 		<div id="yiming" style="padding-top:10px">
-		异名：<input type="text" size="25" name="yiming"/>
+		异名：<input type="text" size="25" name="yiming" id="ym" /> <input type="button" value="增加" id="another" />
 		</div>
 		<div id="yaoxing" style="padding-top:10px">
 		药性：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="yaoxing" >
@@ -126,7 +126,8 @@
 		<div style="text-align="center;padding-top:10px">注意事项：</div><textarea rows="5" cols="50" name="zhuyishixiang"></textarea>
 		</div>
 		<div id="huaxuechengfen" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">化学成分（分号隔开）：</div><textarea rows="5" cols="50" name="huaxuechengfen"></textarea>
+		<div style="text-align="center;padding-top:10px">化学成分（分号隔开）：
+		</div><textarea rows="5" cols="50" name="huaxuechengfen"></textarea>
 		</div>
 		<div id="huaxuechengfencankaowenxian" style="padding-top:10px">
 		<div style="text-align="center;padding-top:10px">化学成分参考文献（分号隔开）：</div><textarea rows="5" cols="50" name="huaxuechengfencankaowenxian"></textarea>
@@ -137,7 +138,14 @@
 		<div id="yaolicankaowenxian" style="padding-top:10px">
 		<div style="text-align="center;padding-top:10px">药理参考文献（分号隔开）：</div><textarea rows="5" cols="50" name="yaolicankaowenxian"></textarea>
 		</div>
-		
+		<div>
+			畲药药方：<input type="button" id="add" value="增加一条" />
+			<div id="yaofang">
+				<input type="50" name="yaofang" size="50"/><br />
+			</div>
+			<br />
+		</div>
+
 										<div>
 											<div id="tu1" style="padding-top: 10px">
 												植物种子图片：<input type="file" name="new_image" id="doc" value=""
@@ -202,10 +210,31 @@
             var input = document.createElement('input');//创建input节点
             input.name  = 'yaofang';   //设置属性
             input.type = 'text';
+            input.size='50';
             var br= document.createElement('br');  //添加br节点换行
-            document.getElementById("td").appendChild(input);  //追加节点
-            document.getElementById("td").appendChild(br);
+            document.getElementById("yaofang").appendChild(input);  //追加节点
+            document.getElementById("yaofang").appendChild(br);
     }
+
+    $(function(){
+    	$("#another").click(function(){
+        	//var anotherName = prompt("异名：");
+        	var name= $("#ym").val();
+        	var anotherName =prompt("异名：");
+        	if(name==""){
+        		name+=anotherName;
+        	}
+        	else{
+        		name=name+";";
+            	name+=anotherName;
+        	}
+        		
+        	
+        	
+        	$("#ym").val(name);
+        	//alert(name);
+        });
+    });
     
     
     </script>
