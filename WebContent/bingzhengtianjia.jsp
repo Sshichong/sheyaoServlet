@@ -45,60 +45,97 @@ a.pos
 {
 position:relative;
 left:1300px;	
-top:-43px
+top:-43px;
+font-size:20px
+
 }
 p.pos
 {position:relative;
-left:50px;
-top:0px
+left:300px;
+top:0px;
+font-size:20px;
 }
 p.pos1
 {
 position:relative;
-left:300px;
-top:-26px
+left:750px;
+top:-26px;
+font-size:20px;
+display: none
 }
 p.pos2
 {
 position:relative;
-left:50px;
-top:0px
+left:300px;
+top:10px;
+font-size:20px
+
 }
 p.pos3
 {
 position:relative;
-left:300px;
-top:-26px
+left:750px;
+top:-26px;
+font-size:20px;
+display: none
 }
 p.pos4
 {
 position:relative;
-left:50px;
-top:0px
+left:300px;
+top:0px;
+font-size:20px;
+
 }
 p.pos5
 {
 position:relative;
-left:50px;
-top:20px
+left:300px;
+top:20px;
+font-size:20px;
+
 }
 p.pos6
 {
 position:relative;
-left:50px;
-top:100px
+left:300px;
+top:100px;
+font-size:20px;
+
 }
 textarea.pos
 {
 position:relative;
-left:110px;
-top:100px
+left:360px;
+top:100px;
+font-size:20px;
+
 }
 input.pos
 {
 position:relative;
-left:110px;
-top:100px
+left:360px;
+top:110px
+}
+div.tianjia
+{
+position: absolute;
+background: gainsboro; 
+left: 600px; 
+top:450px; 
+width: 500px; 
+display: none;
+
+}
+textarea.binglitianjia
+{
+position:relative;
+left:350px;
+top:20px;
+overflow:hidden;
+resize: none;
+font-size:20px;
+
 }
 </style>
 
@@ -144,15 +181,16 @@ top:100px
 				<div id="maincontent">
 				<a href="bingzheng.jsp" class="pos">完成</a>
 				<jsp:getProperty property="mess" name="messInfo"/>
-				<form action="Bztianjia" method="post">
 				
+				
+				<form action="Bztianjia" method="post">
 				
 				<input id="textForChuanshu" name="textForChuanshu"  style="display: none">
 				
 				
-				<p class="pos">病名:<input type="text" name="name" ></p>
-				<p class="pos1">全拼:<input type="text" name="quanpin"></p>
-				<p class="pos2">科室:<select name="keshi" >
+				<p class="pos">病名: <input type="text" id="name" name="name" onblur="qpjp()"></p>
+				<p class="pos1">全拼: <input type="text" id="quanping" name="quanpin"></p>
+				<p class="pos2">科室: <select name="keshi" >
 				      <option value="1">内科</option>
 				      <option value="2">外科</option>
 				      <option value="3">妇科</option>
@@ -160,12 +198,14 @@ top:100px
 				      <option value="5">五官科</option>
 				      <option value="6">蛇伤科</option>
 				      </select></p>
-				<p class="pos3">简拼:<input type="text" name="jianpin"></p>
-				<p class="pos5">病症介绍:<textarea  name="gzjj" cols="60" rows="5" style="overflow:hidden;resize: none;"></textarea></p>
-				<p class="pos6">畲药药方:<input id="tianjia" type="button" value="新增一条"></p>
-				<textarea id="fangzi_show" readonly="readonly" cols="120" rows="10" style="overflow-x:hidden;overflow-y:scroll;" class="pos"></textarea>
+				<p class="pos3">简拼: <input id="jianping" type="text" name="jianpin"></p>
+				<p class="pos5">病症介绍: </p>
+				<textarea  name="gzjj" cols="58" rows="5" class="binglitianjia"></textarea>
+				<p class="pos6">畲药药方: <input id="tianjia" type="button" value="新增一条"></p>
+				<input id="fangzi_show0"  class="pos">
+				
 				<br><br>
-				<input type="submit" value="提交" class="pos">
+				<input type="submit" value="提交" class="pos" id = "zhuanyi" >
 				<input type="reset" value="重置" class= "pos"> 
 				
 				</form> 
@@ -174,7 +214,7 @@ top:100px
 				
 				</div>
 				
-				<div  id="big_shurulan"  style="position: absolute; background: gainsboro; left: 200px; top: 200px; width: 500px; display: none;">
+				<div  id="big_shurulan"  class="tianjia">
 					<div align="right">
 						<button id="tianjia_yitiao">增加一条</button>
 						<button id="jianshao_yitiao">减少 一条</button>
@@ -207,6 +247,10 @@ top:100px
 				var i = 1;
 				var text_all_chuanshu="";
 				var text_show_for = "";
+				
+				var j = 0;
+				
+				
 				$("#tianjia").click(function(){
 					$("#big_shurulan").css("display","block");
 					i=1;
@@ -280,13 +324,15 @@ top:100px
 					
 					
 					
-					if(text_show_for==null||text_show_for==""){
-						text_show_for = text+";";
+					if($("#fangzi_show0").val()==null||$("#fangzi_show0").val()==""){
+						$("#fangzi_show0").val(text);
 					}else{
-						text_show_for = text_show_for+"\r\n"+text+";";
+						
+						j++;
+						$("#fangzi_show"+(j-1)).after("<br><input id='fangzi_show"+j+"' class='pos' value='"+text+"'>");
 					}
 					
-					$("#fangzi_show").val(text_show_for);
+					
 					
 					
 					
@@ -300,6 +346,34 @@ top:100px
 					
 				});
 				
+				
+				
+				//转译中文字符
+				
+				function qpjp(){
+					$.getJSON("http://route.showapi.com/99-38?showapi_appid=51621&content="+$("#name").val()+"&showapi_sign=61964d17fdde49a1b0a95994b2fc9e60",function(data){
+						var a = data.showapi_res_body.simpleData;
+						var b = data.showapi_res_body.data;
+						$("#quanping").val(b);
+						$("#jianping").val(a);
+					}
+					
+					);
+					
+				}
+				
+				//对方子的更改
+				function genggaofangzi(){
+					$.ajax({
+						type:"post",
+						url:"GenggaiFangzi?bingfang=",
+						timeout:3000,
+						dataType : "string",
+						success:function(data){
+							alert("成功");
+						}
+					});
+				}
 				
 				</script>
 				

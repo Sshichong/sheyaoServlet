@@ -53,27 +53,27 @@ position:relative;
 }
 a.pos_abs1
 {
-position:relative;
+position:absolute;
 left:1300px;
-top:-249px
+top:30px
 }
 div.pos
 {
-position:relative;
+position:absolute;
 left:250px;
-top:-200px
+top:100px
 }
 div.pos1
 {
-position:relative;
+position:absolute;
 left:250px;
-top:-150px
+top:250px
 }
 div.pos2
 {
-position:relative;
+position:absolute;
 left:250px;
-top:-100px
+top:500px
 }
 p.word
 {
@@ -129,7 +129,7 @@ font-weight:900
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main about-main">
 				<div id="navsecond">
 				<div id="course"><h2>姓氏排列</h2>
-				 <div style="width: 80px">
+				 <div style="width:100px">
 				 <%
 				 FunCtion fc = new FunCtion();
 				char zimu = 'A';
@@ -139,7 +139,7 @@ font-weight:900
 				if(list!=null){
 				//	System.out.println(list.length);
 				 %>
-				 <details>
+				 <details >
 					<summary><%=zimu %></summary>
 				<%	for(DataList str:list){ %>
 					<ul><li><a href="yijiaAservlet?select_yijia=<%=str.getId()%>"><%=str.getData()%></a></li></ul>
@@ -149,10 +149,10 @@ font-weight:900
 				</details><%
 				zimu++;
 				} %>
-					</div>
+				</div>	
 				</div>
 				</div>
-				
+		
 				<jsp:useBean id="yijia_name" class="com.list.DataLList" scope="request"></jsp:useBean>
 				
 				<%

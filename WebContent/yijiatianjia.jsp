@@ -41,6 +41,13 @@
 <!--//end-smoth-scrolling-->
 
 <style type="text/css">
+h1.pos
+{
+position:relative;
+left:80px;
+top:-60px;
+font-size:50px
+}
 a.pos
 {
 position:relative;
@@ -139,7 +146,7 @@ top:100px
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main about-main">
 				<div id="maincontent">
 				<a href="yijia.jsp" class="pos">完成</a>
-								
+				<h1 class="pos" style="width:500px">医家添加</h1>
 				<form action="yijiattservlet" method="post">
 				<p class="pos">姓名:<input type="text" name="name" ></p>
 				<p class="pos1">全拼:<input type="text" name="quanpin"></p>

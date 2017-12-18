@@ -309,7 +309,7 @@
 				<h2>标志图片</h2>
 				<br>		
 				<div style="background:#F0F0F0; width:400px; height:300px">
-				<img alt="疔疮图片" src="images/bingzheng/dingchuang.jpg" width="400px" height="300px">
+				<img alt="疔疮图片" src="picture/dingchuang.jpg" width="400px" height="300px">
 				</div>
 				<br>
 				<h2>图册</h2>
