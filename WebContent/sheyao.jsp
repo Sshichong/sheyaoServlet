@@ -5,6 +5,7 @@
 <%@page import="com.db.DataProcess"%>
 <%@page import="com.beans.Medizin"%>
 <jsp:useBean id="medizin" class="com.beans.Medizin" scope="request" />
+<jsp:useBean id="messInfo" class="com.beans.MessInfo" scope="request"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -378,6 +379,9 @@ for(int i=0;i<vector.size();i++){
 
 					<%}
 						}
+						else{%>
+							<jsp:getProperty property="mess" name="messInfo"/>
+						<%}
 						%>
 
 

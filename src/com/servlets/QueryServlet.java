@@ -1,7 +1,6 @@
 package com.servlets;
 
 import java.io.IOException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -14,9 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.beans.Medizin;
+import com.beans.MessInfo;
 import com.db.DataProcess;
-
-import sun.rmi.server.Dispatcher;
 
 /**
  * Servlet implementation class QueryServlet
@@ -51,11 +49,15 @@ public class QueryServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		String selectName=request.getParameter("select");
 		
-		
+		MessInfo messInfo =new MessInfo();
 		//验证数据
 		//没有值
 		if(selectName==null||selectName.equals("")){
-			response.sendRedirect("sheyao.jsp");
+			messInfo.setMess("没有查询到结果！");
+			request.setAttribute("messInfo", messInfo);
+			RequestDispatcher dispatcher=request.getRequestDispatcher("sheyao.jsp");
+			dispatcher.forward(request, response);
+			//response.sendRedirect("sheyao.jsp");
 			return ;
 		}
 		
@@ -68,7 +70,8 @@ public class QueryServlet extends HttpServlet {
 		Vector medizin_ziji=new Vector();
 		medizin =data.getData(sql);
 		if(medizin.size()==0){
-			request.setAttribute("mess", "nothing");
+			messInfo.setMess("没有查询到结果！");
+			request.setAttribute("messInfo", messInfo);
 			RequestDispatcher dispatcher =request.getRequestDispatcher("sheyao.jsp");
 			dispatcher.forward(request, response);
 			return;
