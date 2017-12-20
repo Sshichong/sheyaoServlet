@@ -47,7 +47,7 @@ public class QueryServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//接收数据
-		request.setCharacterEncoding("utf-8");
+		//request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		String selectName=request.getParameter("select");
 		
