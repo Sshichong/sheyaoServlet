@@ -70,13 +70,13 @@ public class QueryServlet extends HttpServlet {
 		Vector medizin_ziji=new Vector();
 		medizin =data.getData(sql);
 		if(medizin.size()==0){
-			messInfo.setMess("没有查询到结果！");
+			messInfo.setMess("没有查询到结果！请核对后输入！");
 			request.setAttribute("messInfo", messInfo);
 			RequestDispatcher dispatcher =request.getRequestDispatcher("sheyao.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
-		else{
+		else if(medizin.size()>1){
 			List<Medizin> list =new ArrayList<Medizin>();
 			for(int i=0;i<medizin.size();i++){
 				Medizin m =new Medizin();
@@ -94,10 +94,32 @@ public class QueryServlet extends HttpServlet {
 				list.add(m);
 				//System.out.println(m.getMedizin_plantSeed());
 			}
+			messInfo.setMess("查到以下相关畲药！");
+			request.setAttribute("messInfo", messInfo);
 			request.setAttribute("duotiaojilu", list);
-			RequestDispatcher dispatcher =request.getRequestDispatcher("sheyao.jsp");
+			RequestDispatcher dispatcher =request.getRequestDispatcher("sheyao_duoge.jsp");
 			dispatcher.forward(request, response);
 			
+		}else {
+			
+			List<Medizin> list =new ArrayList<Medizin>();
+			Medizin m=new Medizin();
+			medizin_ziji =(Vector)medizin.get(0);
+			m.setMedizin_name((String)medizin_ziji.get(1));
+			m.setMedizin_anotherName((String)medizin_ziji.get(2));
+			m.setMedizin_property((String)medizin_ziji.get(3));
+			m.setMedizin_introduce((String)medizin_ziji.get(4));
+			m.setMedizin_distribution((String)medizin_ziji.get(5));
+			m.setMedizin_collectionProcessing((String)medizin_ziji.get(6));
+			m.setMedizin_plantSeed((String)medizin_ziji.get(14));
+			m.setMedizin_plantJuvenile((String)medizin_ziji.get(15));
+			m.setMedizin_plantAdult((String)medizin_ziji.get(16));
+			list.add(m);
+			
+			request.setAttribute("yitiaojilu", list);
+			
+			RequestDispatcher dispatcher =request.getRequestDispatcher("sheyao.jsp");
+			dispatcher.forward(request, response);
 		}
 		/*System.out.println(medizin.toString());
 		Vector medizin_ziji=new Vector();

@@ -123,7 +123,6 @@ p.word3
 font-size:15px;
 	
 }
-
 </style>
 
 <!--//end-smoth-scrolling-->
@@ -172,8 +171,8 @@ font-size:15px;
 			<!--//side-bar-->
 			<div
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main about-main">
-				<div class="about" >
-				<img alt="header" src="images/header.png" height="80px" id="image" /> 
+				<div class="about">
+				<!-- <img alt="111" src="images/1111.png" height="100px" > -->
 					<div class="clearfix"></div>
 				</div>
 				<%--  <%
@@ -203,7 +202,7 @@ for(int i=0;i<vector.size();i++){
 				<form action="QueryServlet" method="post">
 				<div align="center">
 				搜索畲药：<input type="text" name="select" placeholder="请输入正名，异名，全拼或简拼" style="margin-left: 10px; margin-top: 50px; width: 400px;"/><input type="submit" value="搜索"/>
-				<input type="button" name="addBingzheng" id = "addBingzheng"  onclick="window.location.href = 'sheyao_tianjia.jsp'" value="畲药添加" />
+				<input type="button" name="addSheyao" id = "addSheyao"  onclick="window.location.href = 'sheyao_tianjia.jsp'" value="畲药添加" />
 				</div>
 				</form>
 				<!-- <a href="sheyao_tianjia.jsp" class="pos_abs1" >畲药添加</a> -->
@@ -303,92 +302,23 @@ for(int i=0;i<vector.size();i++){
 
 				</div>
 				<div id="content-right">
+				<h4 style="margin-top:30px"><jsp:getProperty property="mess" name="messInfo"/></h4><br/>
 					<%
-						List<Medizin> list = (List<Medizin>) request.getAttribute("yitiaojilu");
+						List<Medizin> list = (List<Medizin>) request.getAttribute("duotiaojilu");
 						if (list != null) {
-							for (Medizin m : list) {
-					%>
-					<div id="wenzi">
-						<div class="posa">
-							<span class="word1"><%=m.getMedizin_name()%></span><span
-								style="padding-left: 10px"><%=m.getMedizin_property()%></span>
-							<p class="word">
-								<%=m.getMedizin_anotherName()%>
-							</p>
-
-						</div>
-
-						<div class=pos1>
-							<p class="word2">原植物介绍</p>
-							<div style="border:1px #A9A9A9 solid; width:600px; height:200px"><%=m.getMedizin_introduce()%></div>
-						</div>
-						<div class="pos">
-							<p class="word2">生境分布</p>
-							<p class="word3">
-								<%=m.getMedizin_distribution()%>
-							</p>
-
-						</div>
-						<div class="pos">
-							<p class="word2">采集加工</p>
-							<p class="word3">
-								<%=m.getMedizin_collectionProcessing()%>
-							</p>
-
-						</div>
-						<div class=pos1>
-							<p class="word2">畲药应用</p>
-							<div style="border:1px #A9A9A9 solid; width:100%; height:200px">药方</div>
-						</div>
-					</div>
-				
-					<div id="tu">
-						<h2>标志图片</h2>
-						<br>
-						<div style="background: #F0F0F0; width: 210px; height: 130px">
-							
-								<img  src="picture/<%=m.getMedizin_plantSeed() %>"
-								width="210px" height="130px">
-						</div>
-						<br>
-						<h2>图册</h2>
-						<div style="background: #F0F0F0; width: 150px; height: 150px">
-						<img width="150px"  height="150px" src="picture/<%=m.getMedizin_plantJuvenile()%>" >
-						</div>
-						<br>
-						<div style="background: #F0F0F0; width: 150px; height: 150px">
-						<img alt="222" src="picture/<%=m.getMedizin_plantAdult()%>" width="150px"  height="150px">
-						</div>
-
-					</div>
-					<%-- <div id ="tu">
-						<h2>标志图片</h2>
-						<br>
-						<div style="background: #F0F0F0; width: 330px; height: 248px">
-							<img  src="C/Program Files/Java/apache-tomcat-8.0.45/webapps/myFristServlet//upload/"+<%=m.getMedizin_plantSeed() %>
-								width="400px" height="300px">
-						</div>
-						<br>
-						<h2>图册</h2>
-						<div style="background: #F0F0F0; width: 150px; height: 150px">
-						</div>
-						<br>
-						<div style="background: #F0F0F0; width: 150px; height: 150px">
-						</div> --%>
-
-					<%}
+							for (Medizin m : list) {%>
+						<a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank" ><%=m.getMedizin_name() %></a><br/>		
+					<%	}
 						}
-						else{%>
-							<jsp:getProperty property="mess" name="messInfo"/>
-						<%}
-						%>
-
+					%>
+					
 
 
 				</div>
 				<div class="clearfix"></div>
 		</div>
 	</div>
+
 </div>
 
 	<div class="footer"></div>
