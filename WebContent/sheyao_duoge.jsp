@@ -172,7 +172,7 @@ font-size:15px;
 			<div
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main about-main">
 				<div class="about">
-				<!-- <img alt="111" src="images/1111.png" height="100px" > -->
+				<img alt="header" src="images/header.png" height="80px" id="image" /> 
 					<div class="clearfix"></div>
 				</div>
 				<%--  <%
