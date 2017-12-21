@@ -1,15 +1,17 @@
 #aside {
     float:left;     
     padding-left:5px;
-    padding-right:30px;
+/*     padding-right:30px; */
     padding-top:30px;
-    width:200px;
+    /* width:200px; */
+    width:16%; 
 }
 #content-right {
 	float:left;
     padding-top:1px;
     margin-left:10px;
-    width:850px
+    /*  width:850px ; */
+    width:67%;
 }
 body{
 	margin:0;

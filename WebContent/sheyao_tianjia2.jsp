@@ -87,7 +87,41 @@
 					
 					<div class="clearfix">
 					<div class=neirong>
-	<div class="xinxitianjia" >
+					<div id="jibenxnxi" style="border:1px #A9A9A9 solid">
+					<h1>基本信息</h1>
+					<div id="zhengming">
+            正名：<input type="text" size="25" name="zhengming"/>
+        </div>
+        <div id="yiming" style="padding-top:10px">
+            异名：<input type="text" size="25" name="yiming" id="ym" /> <input type="button" value="增加" id="another" />
+        </div>
+        <div id="yaoxing" style="padding-top:10px">
+            药性：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="yaoxing" >
+            <option value="yinyao">阴药</option>
+            <option value="yangyao">阳药</option>
+        </select>
+        </div>
+        <div id="leibie" style="padding-top:10px">
+            植物类别：<select name="leibie">
+            <option value="2">菌类植物</option>
+            <option value="3">地衣类植物</option>
+            <option value="5">蕨类类植物</option>
+            <option value="6">裸子类植物</option>
+            <option value="7">双子叶类植物</option>
+        </select>
+        </div>
+        <div id="yuanzhiwujieshao" style="padding-top:10px">
+            <div style="text-align="center;padding-top:10px">原植物介绍：</div><textarea rows="5" cols="50" name="yuanzhiwujieshao"></textarea>
+    </div>
+    <div id="shengjingfenbu" style="padding-top:10px">
+        <div style="text-align="center;padding-top:10px">生境分布：</div><textarea rows="5" cols="50" name="shengjingfenbu"></textarea>
+</div>
+<div id="caijijiagong" style="padding-top:10px">
+    <div style="text-align="center;padding-top:10px">采集加工：</div><textarea rows="5" cols="50" name="caijijiagong"></textarea>
+</div>
+					</div>
+					
+<!-- 	<div class="xinxitianjia" >
 	<a href="sheyao.jsp">完成</a><br><br>
 		<form action="InsertSyServlet" method="post" enctype="multipart/form-data">
 		<div style="float:left;margin-left:150px">
@@ -159,7 +193,7 @@
 		</div>
 		<div style="float:left">
 		<img alt="sheyaotianjia" src="picture/sheyaotianjia.png" style="margin-left:250px">
-		</div>
+		</div> -->
 		
 			<!-- <table >
 				<tr><td>正名</td><td><input name="zhengming"></td></tr>

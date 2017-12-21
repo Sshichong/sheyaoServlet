@@ -53,11 +53,12 @@
 float:left;
 padding-left:40px;
 padding-top:30px;
-
+width:20%;
 }
 #wenzi{
 float:left;
 padding-top:25px;
+width:80%;
 }
 div.head_pos
 {
