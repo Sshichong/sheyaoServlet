@@ -2,10 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@page import="java.sql.*" %>
-    <%
+   <%--  <%
     request.setCharacterEncoding("utf-8");
     response.setCharacterEncoding("utf-8");
-    %>
+    %> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +39,19 @@
 </script>
 
 <!--//end-smoth-scrolling-->
+<style type="text/css">
+.yangshi{
+background-color: #F0F0F0;
+float:left;
+
+}
+.yangshi1{
+float:left;
+}
+#yaoxing{
+clear:both;
+}
+</style>
 </head>
 <body>
 	<div class="container-fluid" >
@@ -89,13 +102,74 @@
 					<div class=neirong>
 	<div class="xinxitianjia" >
 	<a href="sheyao.jsp">完成</a><br><br>
-		<form action="InsertSyServlet" method="post" enctype="multipart/form-data">
+		<form action="InsertSyServlet1" method="post" >
 		<div style="float:left;margin-left:150px">
 		<div id="zhengming">
 		正名：<input type="text" size="25" name="zhengming"/>
 		</div>
 		<div id="yiming" style="padding-top:10px">
-		异名：<input type="text" size="25" name="yiming" id="ym" /> <input type="button" value="增加" id="another" />
+		异名：<input type="button" value="增加" id="another" />
+		<div id="ym">
+		</div>
+				<script type="text/javascript">
+			$("#another").click(function(){
+			var str=prompt();
+			if(str){
+				var ss = $("<div class='yangshi' >"+str+"</div>");
+				var te = $("<input name='yiming' type='hidden' value='"+str+"' >");
+				var del = $("<a class='yangshi1' href='#'>x</a>")
+				$(ss).appendTo($(this).parent());
+				$(this).parent().append(te);
+				$(this).parent().append(del);
+
+				var flag=true;
+				$(ss).dblclick(function(){
+					if(flag){
+					var ben = $(this).html();
+					var tem = $("<input id='sa' type='text' value="+ben+" >");
+					$(this).html("");
+					$(this).append(tem)
+					$(tem).focus();
+					flag= false;
+					$(tem).on("blur",function(){
+ 						var bes = $(tem).val();
+						if(bes==""){
+							$(del).remove();
+							$(te).remove();
+ 						}
+						console.log(bes)
+						$(this).parent().html(" "+bes);
+						$(te).val(bes);
+						$(this).remove();
+						flag=true;
+						
+					})
+					$(tem).keydown(function(e){
+						if(e.keyCode==13){
+							var bes = $(tem).val();
+ 						if(bes==""){
+ 							$(del).remove();
+							$(te).remove();
+						}
+						console.log(bes)
+						$(this).parent().html(" "+bes);
+						$(te).val(bes);
+						$(this).remove();
+						flag=true;
+						}
+					})
+				}
+					})
+				$(del).click(function(){
+					$(ss).remove();
+					$(te).remove();
+					$(this).remove();
+				})
+			}
+			})
+			//console.log($("button").last().html())
+		</script>
+		
 		</div>
 		<div id="yaoxing" style="padding-top:10px">
 		药性：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="yaoxing" >
@@ -145,7 +219,7 @@
 			</div>
 			<br />
 		</div>
-
+<!-- 
 										<div>
 											<div id="tu1" style="padding-top: 10px">
 												植物种子图片：<input type="file" name="new_image" id="doc" value=""
@@ -154,12 +228,12 @@
 													<img id="preview" width=-1 height=-1 style="diplay: none" />
 												</div>
 											</div>
-										</div>
+										</div>-->
 										<input type="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重置" />
 		</div>
 		<div style="float:left">
 		<img alt="sheyaotianjia" src="picture/sheyaotianjia.png" style="margin-left:250px">
-		</div>
+		</div> 
 		
 			<!-- <table >
 				<tr><td>正名</td><td><input name="zhengming"></td></tr>
@@ -219,25 +293,25 @@
             document.getElementById("yaofang").appendChild(br);
     }
 
-    $(function(){
-    	$("#another").click(function(){
-        	//var anotherName = prompt("异名：");
-        	var name= $("#ym").val();
-        	var anotherName =prompt("异名：");
-        	if(name==""){
-        		name+=anotherName;
-        	}
-        	else{
-        		name=name+";";
-            	name+=anotherName;
-        	}
+//     $(function(){
+//     	$("#another").click(function(){
+//         	//var anotherName = prompt("异名：");
+//         	var name= $("#ym").val();
+//         	var anotherName =prompt("异名：");
+//         	if(name==""){
+//         		name+=anotherName;
+//         	}
+//         	else{
+//         		name=name+";";
+//             	name+=anotherName;
+//         	}
         		
         	
         	
-        	$("#ym").val(name);
-        	//alert(name);
-        });
-    });
+//         	$("#ym").val(name);
+//         	//alert(name);
+//         });
+//     });
     
     
     </script>

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.beans.Medizin;
+import com.beans.MyTools;
 import com.db.DataProcess;
 import com.jspsmart.upload.SmartUpload;
 import com.jspsmart.upload.SmartUploadException;
@@ -48,13 +49,15 @@ public class InsertSyServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		Medizin medizin=new Medizin();
+		
 		SmartUpload smartupload = new SmartUpload();
 		pinyinTestDuozi py=new pinyinTestDuozi();
 		DataProcess db=new DataProcess();
 		//设置编码方式
-		request.setCharacterEncoding("utf-8");
+		//request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		
+		request.setCharacterEncoding("utf-8");
+		String yuanzhiwujiesha=request.getParameter("yuanzhiwujieshao");
 		//接受图片信息
 		try{
 			smartupload.setTotalMaxFileSize(4000*1024);       // 设置上传的文件大小
@@ -99,9 +102,7 @@ public class InsertSyServlet extends HttpServlet {
 			
 			System.out.println(new_image);
 		}
-		
 		//接收数据
-		
 		String zhengming = new String(smartupload.getRequest().getParameter("zhengming").trim().getBytes(),"utf-8");
 		String yiming = new String(smartupload.getRequest().getParameter("yiming").trim().getBytes(),"utf-8");
 		String yaoxing = new String(smartupload.getRequest().getParameter("yaoxing").trim().getBytes(),"utf-8");

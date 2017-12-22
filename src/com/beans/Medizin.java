@@ -1,7 +1,7 @@
 package com.beans;
 
 public class Medizin {
-	private String medizin_ID;
+	private int medizin_ID;
 	private String medizin_name="";
 	private String medizin_anotherName="";
 	private String medizin_property="";
@@ -53,7 +53,12 @@ public class Medizin {
 	
 
 
-	public String getMedizin_ID() {
+	
+
+
+
+
+	public int getMedizin_ID() {
 		return medizin_ID;
 	}
 
@@ -63,9 +68,19 @@ public class Medizin {
 
 
 
-	public void setMedizin_ID(String medizin_ID) {
+
+
+
+
+
+	public void setMedizin_ID(int medizin_ID) {
 		this.medizin_ID = medizin_ID;
 	}
+
+
+
+
+
 
 
 

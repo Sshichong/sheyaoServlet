@@ -205,7 +205,7 @@ for(int i=0;i<vector.size();i++){
 				<h1>畲药</h1>
 				<form action="QueryServlet" method="post">
 				<div align="center">
-				搜索畲药：<input type="text" name="select" placeholder="请输入正名，异名，全拼或简拼" style="margin-left: 10px; margin-top: 50px; width: 400px;"/><input type="submit" value="搜索"/>
+				搜索畲药：<input id="select" type="text" name="select" placeholder="请输入正名，异名，全拼或简拼" style="margin-left: 10px; margin-top: 50px; width: 400px;"/><input id="submit" type="submit" value="搜索"/>
 				<input type="button" name="addBingzheng" id = "addBingzheng"  onclick="window.location.href = 'sheyao_tianjia.jsp'" value="畲药添加" />
 				</div>
 				</form>
@@ -399,5 +399,14 @@ for(int i=0;i<vector.size();i++){
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="js/bootstrap.js"> </script>
+	<script type="text/javascript">
+	$(function(){
+		$("#submit").click(function(){
+			if($("#select").val()==""){
+				alert("请输入关键字！");
+			}
+		})
+	});
+	</script>
 </body>
 </html>

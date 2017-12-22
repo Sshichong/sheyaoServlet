@@ -53,11 +53,7 @@ public class QueryServlet extends HttpServlet {
 		//验证数据
 		//没有值
 		if(selectName==null||selectName.equals("")){
-			messInfo.setMess("没有查询到结果！");
-			request.setAttribute("messInfo", messInfo);
-			RequestDispatcher dispatcher=request.getRequestDispatcher("sheyao.jsp");
-			dispatcher.forward(request, response);
-			//response.sendRedirect("sheyao.jsp");
+			response.sendRedirect("sheyao.jsp");
 			return ;
 		}
 		
