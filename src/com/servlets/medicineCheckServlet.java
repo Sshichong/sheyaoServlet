@@ -2,26 +2,27 @@ package com.servlets;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.beans.Medizin;
 import com.beans.pinyinTool;
-import com.db.DataProcess;
 
 /**
- * Servlet implementation class InsertSyServlet1
+ * Servlet implementation class medicineCheckServlet
  */
-@WebServlet("/InsertSyServlet1")
-public class InsertSyServlet1 extends HttpServlet {
+@WebServlet("/medicineCheckServlet")
+public class medicineCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertSyServlet1() {
+    public medicineCheckServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,10 +40,11 @@ public class InsertSyServlet1 extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//接收数据
 		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		String zhengming = request.getParameter("zhengming");
-//		String[] ym = request.getParameterValues("yiming");
-		String yiming=request.getParameter("yiming");
+		String[] ym = request.getParameterValues("yiming");
 		String yaoxing = request.getParameter("yaoxing");
 		String leibie = request.getParameter("leibie");
 		String yuanzhiwujieshao = request.getParameter("yuanzhiwujieshao");
@@ -53,12 +55,10 @@ public class InsertSyServlet1 extends HttpServlet {
 		String huaxuechengfencankaowenxian = request.getParameter("huaxuechengfencankaowenxian");
 		String xiandailinchuangyanjiucankaowenxian =request.getParameter("xiandailinchuangyanjiucankaowenxian");
 		String yaolicankaowenxian = request.getParameter("yaolicankaowenxian");
-		String forSelect =request.getParameter("forSelect");
 		
-		System.out.println(yaoxing);
 		System.out.println(leibie);
-		System.out.println(forSelect);
-		/*pinyinTool py =new pinyinTool();
+		//处理数据
+		pinyinTool py =new pinyinTool();
 		StringBuffer forSelect=new StringBuffer();
 		String zmqp=py.cn2Spell(zhengming);
 		String zmjp=py.cn2FirstSpell(zhengming);
@@ -97,21 +97,65 @@ public class InsertSyServlet1 extends HttpServlet {
 			forSelect.append(";");
 		}
 
-		}*/
+		}
 		
-		DataProcess data=new DataProcess();
-		String sql ="insert into medizin (Medizin_name,Medizin_anotherName,Medizin_property,Medizin_introduce,Medizin_distribution,Medizin_CollectionProcessing,Medizin_disease,Medizin_precautions,Medizin_ChemicalComponent,Medizin_ReferencesChemical,Medizin_ReferencesClinic,Medizin_ReferencesPharmacology,Medizin_planCategory,Medizin_forSelect) values('"+zhengming+"','"+yiming+"','"+yaoxing+"','"+yuanzhiwujieshao+"','"+shengjingfenbu+"','"+caijijiagong+"','1','"+zhuyishixiang+"','"+huaxuechengfen+"','"+huaxuechengfencankaowenxian+"','"+xiandailinchuangyanjiucankaowenxian+"','"+yaolicankaowenxian+"',"+leibie+",'"+forSelect+"')";
-		int num=data.update(sql);
-		if(num == 1){
-			response.sendRedirect("insertsysuccess.jsp");
-			//成功则返回查询页面
-//			request.getRequestDispatcher("sheyao_tianjia.jsp").forward(request, response);
+		//类别处理
+		String lb="";
+		if(leibie.equals("2")) {
+			lb="菌类植物";
+		}else if(leibie.equals("3")) {
+			lb="地衣苔藓类植物";
+		}else if(leibie.equals("5")) {
+			lb="蕨类植物";
+		}else if(leibie.equals("6")) {
+			lb="裸子植物";
+		}else if(leibie.equals("7")) {
+			lb="双子叶植物";
 		}
-		if(num==0) {
-			System.out.println("error");
-			response.sendRedirect("sheyao_tianjia.jsp");
-			return;
-		}
+		/*switch(leibie){
+		case "2":
+			lb="蕨类植物";
+			break;
+		case "3":
+			lb="地衣苔藓类植物";
+			break;
+		case "5":
+			lb="蕨类植物";
+			break;
+		case "6":
+			lb="裸子植物";
+			break;
+		case "7":
+			lb="双子叶植物";
+			break;
+		default:
+				break;
+		}*/
+		System.out.println(lb);
+		
+		
+		Medizin medizin=new Medizin();
+		medizin.setMedizin_name(zhengming);
+		medizin.setMedizin_anotherName(yiming);
+		medizin.setMedizin_property(yaoxing);
+		medizin.setMedizin_planCategory(leibie);
+		medizin.setMedizin_introduce(yuanzhiwujieshao);
+		medizin.setMedizin_collectionProcessing(caijijiagong);
+		medizin.setMedizin_distribution(shengjingfenbu);
+		medizin.setMedizin_precautions(zhuyishixiang);
+		medizin.setMedizin_chemicalComponent(huaxuechengfen);
+		medizin.setMedizin_referencesChemical(huaxuechengfencankaowenxian);
+		medizin.setMedizin_referencesClinic(xiandailinchuangyanjiucankaowenxian);
+		medizin.setMedizin_referencesPharmacology(yaolicankaowenxian);
+		medizin.setMedizin_forSelect(forSelect.toString());
+		
+		request.setAttribute("medizin", medizin);
+		request.setAttribute("lb",lb );
+		RequestDispatcher dispatcher =request.getRequestDispatcher("medizinCheck.jsp");
+		dispatcher.forward(request, response);
+		
+		
+		
 	}
 
 }

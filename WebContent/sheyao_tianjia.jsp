@@ -102,7 +102,7 @@ clear:both;
 					<div class=neirong>
 	<div class="xinxitianjia" >
 	<a href="sheyao.jsp">完成</a><br><br>
-		<form action="InsertSyServlet1" method="post" >
+		<form action="medicineCheckServlet" method="post" >
 		<div style="float:left;margin-left:150px">
 		<div id="zhengming">
 		正名：<input type="text" size="25" name="zhengming"/>
@@ -349,5 +349,55 @@ clear:both;
 		return true;
 	}
 </script> 
+<script type="text/javascript">
+			
+		$("form").on("submit",function(e){
+			if($("input[name='zhengming']").val().replace(/\s/g,"")==""){
+				e.preventDefault();
+				$("input[name='zhengming']").focus();
+				alert("请输入正名！");
+				return;
+			}
+			/* if($("input[name='yaoxing']:selected").length==0){
+				//console.log($("#shanchang").length);
+				if($("#yaoxing").length==0){
+				e.preventDefault();
+				if($("input[name='yaoxing']:selected").length==0){
+					$("input[name='yaoxing']:first").focus();}
+				alert("请选择药性！");
+				return;
+				}
+			}
+			if($("input[name='leibie']:selected").length==0){
+				//console.log($("#shanchang").length);
+				if($("#leibie").length==0){
+				e.preventDefault();
+				if($("input[name='leibie']:selected").length==0){
+					$("input[name='leibie']:first").focus();}
+				alert("请选择类别！");
+				return;
+				}
+			} */
+			if($("textarea[name='yuanzhiwujieshao']").val().replace(/\s/g,"")==""){
+				e.preventDefault();
+				$("textarea[name='yuanzhiwujieshao']").focus();
+				alert("请填写原植物介绍！");
+				return;
+			}
+			if($("textarea[name='shengjingfenbu']").val().replace(/\s/g,"")==""){
+				e.preventDefault();
+				$("textarea[name='shengjingfenbu']").focus();
+				alert("请填写生境分布！");
+				return;
+			}
+			if($("textarea[name='caijijiagong']").val().replace(/\s/g,"")==""){
+				e.preventDefault();
+				$("textarea[name='caijijiagong']").focus();
+				alert("请填写采集加工！");
+				return;
+			}
+		})
+		
+	</script>
 </body>
 </html>
