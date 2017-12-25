@@ -54,8 +54,89 @@
 		});
 </script>
 <!--//end-smoth-scrolling-->
+<style type="text/css">
+#tu{
+float:left;
+padding-left:20px;
+padding-top:20px;
+width:20%;
+
+}
+#wenzi{
+float:left;
+padding-top:25px;
+padding-right:30px;
+width:80%;
+}
+div.head_pos
+{
+position:absolute;
+left:530px;
+top:30px
+}
+input.pos_abs
+{
+position:relative;
+}
+a.pos_abs1
+{
+position:absolute;
+left:900px;
+top:150px
+}
+div.pos
+{
+position:relative;
+left:10px;
+top:20px
+}
+div.posa
+{
+position:relative;
+left:10px;
+}
+div.pos1
+{
+position:relative;
+left:10px;
+top:20px
+}
+
+div.pos2
+{
+position:absolute;
+left:250px;
+top:500px
+}
+p.word
+{
+font-size:20px		
+}
+p.word1
+{
+font-size:50px;
+font-weight:900		
+}
+span.word1
+{
+font-size:50px;
+font-weight:900		
+}
+p.word2
+{
+font-size:20px;
+font-weight:900		
+}
+p.word3
+{
+font-size:15px;
+	
+}
+
+</style>
 </head>
 <body>
+
 	<div class="container-fluid">
 		<div class="row">
 			<!--side-bar-->
@@ -102,19 +183,19 @@
 				
 				
 				<div class="services">
-				<h1>病症模块</h1> 
+				<!-- <h1>病症模块</h1>  -->
+				<img alt="header" src="images/header.png" height="80px" id="image" /> 
 				<div style="position: absolute;left: 300px;top: 160px; color: red;" >
 				<jsp:getProperty property="mess" name="message"/>
 				</div>
 					<form action="Select_bingzheng">
-						<div style="position: absolute;left: 300px;top: 70px;">
-							请输入您要搜索的病症: <input type="text" name="select_chaxunbingzheng"   style="margin-left: 10px; margin-top: 50px; width: 400px;" placeholder="病症名称，关键字或者拼音"/>
-							<input type="submit" value="查询"/>
+						<div align="center">
+							搜索病症: <input type="text" name="select_chaxunbingzheng"   style="margin-left: 10px; margin-top: 50px; width: 400px;" placeholder="请输入正名，异名，全拼或简拼"/><input type="submit" value="查询"/>
 							<input type="button" name="addBingzheng" id = "addBingzheng"  onclick="window.location.href = 'bingzhengtianjia.jsp'" value="病症添加" />
 							</div>
 							</form>
 						</div>
-				<div style="position: absolute;top: 200px;width:200px">
+				<div id="aside">
                     <details>
 						<summary>内科</summary>
 							<%
@@ -249,18 +330,21 @@
 							%>		
 					</details>
 			</div>
-			<div style="position: absolute;left: 300px;top: 200px;">
-			 	<h4><jsp:getProperty property="bzKeshi" name="bingzheng"/> </h4>
-			 	<h1><jsp:getProperty property="bzName" name="bingzheng"/></h1>
-			 	<br>
-			 	<h2>病症介绍</h2>
-			  	<div style="border:2px #0F0F0F solid; width:500px; height:200px">
-			  	<jsp:getProperty property="bzJieshao" name="bingzheng"/>
-			   	</div>
-			   	<br>
-			 	<h2>畲药药方</h2>
-			 	<div style="border:2px #0F0F0F solid; width:500px; height:200px">
-			  	<%
+	<div id="content-right">
+			 <div id="wenzi">
+			     <div class="posa">
+			 	<span class="word1"><jsp:getProperty property="bzKeshi" name="bingzheng"/> </span>
+			 	<p class="word"><jsp:getProperty property="bzName" name="bingzheng"/></p>
+			 	</div>
+			 	
+						<div class=pos1>
+							<p class="word2">病症介绍</p>
+							<div style="border:1px #A9A9A9 solid; width:100%; height:200px"><jsp:getProperty property="bzJieshao" name="bingzheng"/></div>
+						</div>
+						<div class="pos1">
+							<p class="word2">畲药药方</p>
+							<div style="border:1px #A9A9A9 solid; width:100%; height:200px">
+								<%
 			  	if(bingzheng.getBzID()==null){
 			  		%>
 			  			1:<a href="QueryServlet?select=马勃">马勃</a>3份 , 鲜猪油1份 ,
@@ -277,7 +361,7 @@
 						for(int j = 0 ; j < bz2.length;j++){
 							String[] bz1 = bz2[j].split("[+]");//转译"+"
 							if(bz1[0].matches("[0-9]+")){
-								Vector a = dataProcess.getData("select Medizin_name from medizin where Medizin_ID like '"+bz1[0]+"'");
+								Vector a = dataProcess.getData("select Medicine_Name from medicine where Medicine_ID like '"+bz1[0]+"'");
 								Vector b = (Vector)a.get(0);
 								%><a href="QueryServlet?select="+<%=b.get(0)%>><%=b.get(0)%></a><%=bz1[1] %><%
 							}else{
@@ -301,15 +385,16 @@
 			  	
 			  	
 			  	%>
-			  	
-			  	
-			   </div>
+				</div>
 			</div>
-			<div  style="position: absolute;left: 900px;top: 200px;">
+
+		</div>
+	 	
+			<div  id="tu">
 				<h2>标志图片</h2>
 				<br>		
 				<div style="background:#F0F0F0; width:400px; height:300px">
-				<img alt="疔疮图片" src="picture/dingchuang.jpg" width="400px" height="300px">
+				<img alt="疔疮图片" src="images/bingzheng/dingchuang.jpg" width="400px" height="300px">
 				</div>
 				<br>
 				<h2>图册</h2>
@@ -318,12 +403,12 @@
 				<br>
 				<div style="background:#F0F0F0; width:180px; height:200px">
 				</div>
-		   </div>	
-				<div class="footer">
-					<p>Copyright &copy; 2015.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="æ¨¡æ¿ä¹å®¶">æ¨¡æ¿ä¹å®¶</a> - Collect from <a href="http://www.cssmoban.com/" title="ç½é¡µæ¨¡æ¿" target="_blank">ç½é¡µæ¨¡æ¿</a></p>
-				</div>
+		   </div>
+		   
+		
 			</div>
-			
+		   
+	
 			
 			<div class="clearfix">
 			

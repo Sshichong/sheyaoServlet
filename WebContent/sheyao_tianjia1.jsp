@@ -2,10 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@page import="java.sql.*" %>
-    <%
+   <%--  <%
     request.setCharacterEncoding("utf-8");
     response.setCharacterEncoding("utf-8");
-    %>
+    %> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +39,19 @@
 </script>
 
 <!--//end-smoth-scrolling-->
+<style type="text/css">
+.yangshi{
+background-color: #F0F0F0;
+float:left;
+
+}
+.yangshi1{
+float:left;
+}
+#yaoxing{
+clear:both;
+}
+</style>
 </head>
 <body>
 	<div class="container-fluid" >
@@ -86,50 +99,19 @@
 				<div class="about">
 					
 					<div class="clearfix">
-					<div class=neirong>
-					<div id="jibenxnxi" style="border:1px #A9A9A9 solid">
-					<h1>基本信息</h1>
-					<div id="zhengming">
-            正名：<input type="text" size="25" name="zhengming"/>
-        </div>
-        <div id="yiming" style="padding-top:10px">
-            异名：<input type="text" size="25" name="yiming" id="ym" /> <input type="button" value="增加" id="another" />
-        </div>
-        <div id="yaoxing" style="padding-top:10px">
-            药性：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="yaoxing" >
-            <option value="yinyao">阴药</option>
-            <option value="yangyao">阳药</option>
-        </select>
-        </div>
-        <div id="leibie" style="padding-top:10px">
-            植物类别：<select name="leibie">
-            <option value="2">菌类植物</option>
-            <option value="3">地衣类植物</option>
-            <option value="5">蕨类类植物</option>
-            <option value="6">裸子类植物</option>
-            <option value="7">双子叶类植物</option>
-        </select>
-        </div>
-        <div id="yuanzhiwujieshao" style="padding-top:10px">
-            <div style="text-align="center;padding-top:10px">原植物介绍：</div><textarea rows="5" cols="50" name="yuanzhiwujieshao"></textarea>
-    </div>
-    <div id="shengjingfenbu" style="padding-top:10px">
-        <div style="text-align="center;padding-top:10px">生境分布：</div><textarea rows="5" cols="50" name="shengjingfenbu"></textarea>
-</div>
-<div id="caijijiagong" style="padding-top:10px">
-    <div style="text-align="center;padding-top:10px">采集加工：</div><textarea rows="5" cols="50" name="caijijiagong"></textarea>
-</div>
-					</div>
-					
-<!-- 	<div class="xinxitianjia" >
+					<div class=neirong >
+	<div class="xinxitianjia" >
 	<a href="sheyao.jsp">完成</a><br><br>
-		<form action="InsertSyServlet" method="post" enctype="multipart/form-data">
+		<form action="medicineCheckServlet" method="post" >
 		<div style="float:left;margin-left:150px">
 		<div id="zhengming">
 		正名：<input type="text" size="25" name="zhengming"/>
 		</div>
 		<div id="yiming" style="padding-top:10px">
-		异名：<input type="text" size="25" name="yiming" id="ym" /> <input type="button" value="增加" id="another" />
+		异名：<input type="button" value="增加" id="another" />
+		<div id="ym">
+		</div>
+				
 		</div>
 		<div id="yaoxing" style="padding-top:10px">
 		药性：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="yaoxing" >
@@ -179,7 +161,7 @@
 			</div>
 			<br />
 		</div>
-
+<!-- 
 										<div>
 											<div id="tu1" style="padding-top: 10px">
 												植物种子图片：<input type="file" name="new_image" id="doc" value=""
@@ -188,12 +170,12 @@
 													<img id="preview" width=-1 height=-1 style="diplay: none" />
 												</div>
 											</div>
-										</div>
+										</div>-->
 										<input type="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重置" />
 		</div>
-		<div style="float:left">
+		<!-- <div style="float:left">
 		<img alt="sheyaotianjia" src="picture/sheyaotianjia.png" style="margin-left:250px">
-		</div> -->
+		</div>  -->
 		
 			<!-- <table >
 				<tr><td>正名</td><td><input name="zhengming"></td></tr>
@@ -240,6 +222,66 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/bootstrap.js"> </script>
+    <!-- 异名添加 -->
+    <script type="text/javascript">
+			$("#another").click(function(){
+			var str=prompt();
+			if(str){
+				var ss = $("<div class='yangshi' >"+str+"</div>");
+				var te = $("<input name='yiming' type='hidden' value='"+str+"' >");
+				var del = $("<a class='yangshi1' href='#'>x</a>")
+				$(ss).appendTo($(this).parent());
+				$(this).parent().append(te);
+				$(this).parent().append(del);
+
+				var flag=true;
+				$(ss).dblclick(function(){
+					if(flag){
+					var ben = $(this).html();
+					var tem = $("<input id='sa' type='text' value="+ben+" >");
+					$(this).html("");
+					$(this).append(tem)
+					$(tem).focus();
+					flag= false;
+					$(tem).on("blur",function(){
+ 						var bes = $(tem).val();
+						if(bes==""){
+							$(del).remove();
+							$(te).remove();
+ 						}
+						console.log(bes)
+						$(this).parent().html(" "+bes);
+						$(te).val(bes);
+						$(this).remove();
+						flag=true;
+						
+					})
+					$(tem).keydown(function(e){
+						if(e.keyCode==13){
+							var bes = $(tem).val();
+ 						if(bes==""){
+ 							$(del).remove();
+							$(te).remove();
+						}
+						console.log(bes)
+						$(this).parent().html(" "+bes);
+						$(te).val(bes);
+						$(this).remove();
+						flag=true;
+						}
+					})
+				}
+					})
+				$(del).click(function(){
+					$(ss).remove();
+					$(te).remove();
+					$(this).remove();
+				})
+			}
+			})
+			//console.log($("button").last().html())
+		</script>
+		<!-- 药方添加 -->
     <script>
     add.onclick=function(){
     	/* var input=document.getElementById("td");
@@ -253,28 +295,29 @@
             document.getElementById("yaofang").appendChild(br);
     }
 
-    $(function(){
-    	$("#another").click(function(){
-        	//var anotherName = prompt("异名：");
-        	var name= $("#ym").val();
-        	var anotherName =prompt("异名：");
-        	if(name==""){
-        		name+=anotherName;
-        	}
-        	else{
-        		name=name+";";
-            	name+=anotherName;
-        	}
+//     $(function(){
+//     	$("#another").click(function(){
+//         	//var anotherName = prompt("异名：");
+//         	var name= $("#ym").val();
+//         	var anotherName =prompt("异名：");
+//         	if(name==""){
+//         		name+=anotherName;
+//         	}
+//         	else{
+//         		name=name+";";
+//             	name+=anotherName;
+//         	}
         		
         	
         	
-        	$("#ym").val(name);
-        	//alert(name);
-        });
-    });
+//         	$("#ym").val(name);
+//         	//alert(name);
+//         });
+//     });
     
     
     </script>
+    <!-- 添加图片时显示缩略图 -->
     <script> 
 	function setImagePreview() {
 		var docObj = document.getElementById("doc");
@@ -309,5 +352,56 @@
 		return true;
 	}
 </script> 
+<!-- 控制输入 -->
+<script type="text/javascript">
+			
+		$("form").on("submit",function(e){
+			if($("input[name='zhengming']").val().replace(/\s/g,"")==""){
+				e.preventDefault();
+				$("input[name='zhengming']").focus();
+				alert("请输入正名！");
+				return;
+			}
+			/* if($("input[name='yaoxing']:selected").length==0){
+				//console.log($("#shanchang").length);
+				if($("#yaoxing").length==0){
+				e.preventDefault();
+				if($("input[name='yaoxing']:selected").length==0){
+					$("input[name='yaoxing']:first").focus();}
+				alert("请选择药性！");
+				return;
+				}
+			}
+			if($("input[name='leibie']:selected").length==0){
+				//console.log($("#shanchang").length);
+				if($("#leibie").length==0){
+				e.preventDefault();
+				if($("input[name='leibie']:selected").length==0){
+					$("input[name='leibie']:first").focus();}
+				alert("请选择类别！");
+				return;
+				}
+			} */
+			if($("textarea[name='yuanzhiwujieshao']").val().replace(/\s/g,"")==""){
+				e.preventDefault();
+				$("textarea[name='yuanzhiwujieshao']").focus();
+				alert("请填写原植物介绍！");
+				return;
+			}
+			if($("textarea[name='shengjingfenbu']").val().replace(/\s/g,"")==""){
+				e.preventDefault();
+				$("textarea[name='shengjingfenbu']").focus();
+				alert("请填写生境分布！");
+				return;
+			}
+			if($("textarea[name='caijijiagong']").val().replace(/\s/g,"")==""){
+				e.preventDefault();
+				$("textarea[name='caijijiagong']").focus();
+				alert("请填写采集加工！");
+				return;
+			}
+		})
+		
+	</script>
 </body>
 </html>

@@ -36,33 +36,33 @@ public class yijiattservlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");  
 		
 		String name = (String)request.getParameter("name");
-		String quanpin = (String)request.getParameter("quanpin");
-		String jianpin = (String)request.getParameter("jianpin");
+//		String quanpin = (String)request.getParameter("quanpin").trim();
+//		String jianpin = (String)request.getParameter("jianpin").trim();
 		String title = (String)request.getParameter("zhicheng");
-		String[] shanchang = request.getParameterValues("shanchang");
-		String zhuzhi = (String) request.getParameter("zhuzhi");
+		String PY = (String)request.getParameter("PY");
+		String shanchang = request.getParameter("shanchang");
+//		String zhuzhi = (String) request.getParameter("zhuzhi");
 		String doct_info = (String)request.getParameter("grjj");
 		if(name==null||name.equals("")) {
 			response.sendRedirect("yijiatianjia.jsp");
 			return;
 		}
-		StringBuffer PY = new StringBuffer();
-		PY.append(jianpin);
-		PY.append(quanpin);
-		StringBuffer sx = new StringBuffer();
-		if(shanchang!=null) {
-			DataProcess sp = new DataProcess();
-			for(String st : shanchang) {
-				//System.out.println(st);
-			String str = sp.getData("select department_info from department where department_id = " + st).toString().replaceAll("[\\[\\]]", "");
-			//System.out.println(str);
-			sx.append(str);
-			sx.append(";");
-			}
-		}
-		if(zhuzhi!=null&&!zhuzhi.equals(""))
-		sx.append(zhuzhi+";");
-		String sql="INSERT into doctor(Doctor_name,Doctor_forSelect,Doctor_introduce,Doctor_title,department_info)VALUES('"+name+"','"+PY+"','"+doct_info+"','"+title+"','"+sx+"');";
+//		PY.append(jianpin);
+//		PY.append(quanpin);
+//		StringBuffer sx = new StringBuffer();
+//		if(shanchang!=null) {
+//			DataProcess sp = new DataProcess();
+//			for(String st : shanchang) {
+//				//System.out.println(st);
+//			String str = sp.getData("select department_info from department where department_id = " + st).toString().replaceAll("[\\[\\]]", "");
+//			//System.out.println(str);
+//			sx.append(str);
+//			sx.append(";");
+//			}
+//		}
+//		if(zhuzhi!=null&&!zhuzhi.equals(""))
+//		sx.append(zhuzhi+";");
+		String sql="INSERT into doctor(Doctor_name,Doctor_forSelect,Doctor_introduce,Doctor_title,department_info)VALUES('"+name+"','"+PY+"','"+doct_info+"','"+title+"','"+shanchang+"');";
 		DataProcess dp = new DataProcess();
 		int num =  dp.update(sql);
 		if(num==0) {
@@ -71,7 +71,7 @@ public class yijiattservlet extends HttpServlet {
 			return;
 		}
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("yijiatianjia.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("Seccessful.jsp");
 		requestDispatcher.forward(request, response);
 	}
 

@@ -44,29 +44,26 @@
 a.pos
 {
 position:relative;
-left:1300px;	
-top:-43px;
+float:right;
 font-size:20px
 
 }
 p.pos
 {position:relative;
-left:300px;
-top:0px;
+
 font-size:20px;
 }
 p.pos1
 {
 position:relative;
-left:750px;
-top:-26px;
+
 font-size:20px;
 display: none
 }
 p.pos2
 {
 position:relative;
-left:300px;
+
 top:10px;
 font-size:20px
 
@@ -74,7 +71,7 @@ font-size:20px
 p.pos3
 {
 position:relative;
-left:750px;
+
 top:-26px;
 font-size:20px;
 display: none
@@ -82,23 +79,21 @@ display: none
 p.pos4
 {
 position:relative;
-left:300px;
-top:0px;
+
 font-size:20px;
 
 }
 p.pos5
 {
 position:relative;
-left:300px;
-top:20px;
+margin-top:20px;
 font-size:20px;
 
 }
 p.pos6
 {
 position:relative;
-left:300px;
+
 top:100px;
 font-size:20px;
 
@@ -106,7 +101,7 @@ font-size:20px;
 textarea.pos
 {
 position:relative;
-left:360px;
+
 top:100px;
 font-size:20px;
 
@@ -114,14 +109,14 @@ font-size:20px;
 input.pos
 {
 position:relative;
-left:360px;
+
 top:110px
 }
 div.tianjia
 {
 position: absolute;
 background: gainsboro; 
-left: 600px; 
+ 
 top:450px; 
 width: 500px; 
 display: none;
@@ -130,7 +125,7 @@ display: none;
 textarea.binglitianjia
 {
 position:relative;
-left:350px;
+
 top:20px;
 overflow:hidden;
 resize: none;
@@ -180,15 +175,15 @@ font-size:20px;
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main about-main">
 				<div id="maincontent">
 				<a href="bingzheng.jsp" class="pos">完成</a>
-				<jsp:getProperty property="mess" name="messInfo"/>
+<%-- 				<jsp:getProperty property="mess" name="messInfo"/> --%>
 				
-				
+				<div style="width:80%; margin: 30px auto;">
 				<form action="Bztianjia" method="post">
 				
 				<input id="textForChuanshu" name="textForChuanshu"  style="display: none">
 				
 				
-				<p class="pos">病名: <input type="text" id="name" name="name" onblur="qpjp()"></p>
+				<p class="pos">病名: <input type="text" id="name" name="name" onblur="qpjp()" required="required"></p>
 				<p class="pos1">全拼: <input type="text" id="quanping" name="quanpin"></p>
 				<p class="pos2">科室: <select name="keshi" >
 				      <option value="1">内科</option>
@@ -200,7 +195,7 @@ font-size:20px;
 				      </select></p>
 				<p class="pos3">简拼: <input id="jianping" type="text" name="jianpin"></p>
 				<p class="pos5">病症介绍: </p>
-				<textarea  name="gzjj" cols="58" rows="5" class="binglitianjia"></textarea>
+				<textarea  name="gzjj" cols="58" rows="5" class="binglitianjia" required="required"></textarea>
 				<p class="pos6">畲药药方: <input id="tianjia" type="button" value="新增一条"></p>
 				<input id="fangzi_show0"  class="pos">
 				
@@ -210,7 +205,7 @@ font-size:20px;
 				
 				</form> 
 				
-				
+				</div>
 				
 				</div>
 				

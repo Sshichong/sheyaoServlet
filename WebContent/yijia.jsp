@@ -18,6 +18,7 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 <!--//web-font-->
 <!-- Custom Theme files -->
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Plot Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
@@ -41,39 +42,54 @@
 <!--//end-smoth-scrolling-->
 
 <style type="text/css">
+html{font-size:62.5%;}
+body {font:normal 100% Arial,sans-serif;font-size:14px; font-size:1.4rem; }
+
+div.list_pos{
+position:absolute;
+left:8%;
+top:70px
+}
+div.head1_pos
+{
+position:absolute;
+left:8%;
+top:50px
+}
 div.head_pos
 {
 position:absolute;
-left:530px;
+left:33%;
 top:30px
 }
 input.pos_abs
 {
-position:relative;
+
+position:absolute;
 }
 a.pos_abs1
 {
-position:absolute;
-left:1300px;
-top:30px
+position:relative;
+left:10%;
+top:0px
 }
 div.pos
 {
 position:absolute;
-left:250px;
-top:100px
+left:23%;
+top:120px
 }
 div.pos1
 {
 position:absolute;
-left:250px;
-top:250px
+left:23%;
+top:270px
 }
 div.pos2
 {
 position:absolute;
-left:250px;
-top:500px
+left:23%;
+top:480px
 }
 p.word
 {
@@ -123,13 +139,15 @@ font-weight:900
 						</script>
 						<!-- /script-for-menu -->
 				</div>
-				<div class="clearfix"> </div>				
+				<div class="clearfix">
+				 </div>				
 			</div>
 			<!--//side-bar-->
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main about-main">
 				<div id="navsecond">
-				<div id="course"><h2>姓氏排列</h2>
-				 <div style="width:100px">
+				
+				<div id="course" class="head1_pos"><h2>姓氏排列</h2>
+				 <div style="width: 80px" class="list_pos">
 				 <%
 				 FunCtion fc = new FunCtion();
 				char zimu = 'A';
@@ -139,7 +157,7 @@ font-weight:900
 				if(list!=null){
 				//	System.out.println(list.length);
 				 %>
-				 <details >
+				 <details>
 					<summary><%=zimu %></summary>
 				<%	for(DataList str:list){ %>
 					<ul><li><a href="yijiaAservlet?select_yijia=<%=str.getId()%>"><%=str.getData()%></a></li></ul>
@@ -149,10 +167,10 @@ font-weight:900
 				</details><%
 				zimu++;
 				} %>
-				</div>	
+					</div>
 				</div>
 				</div>
-		
+				
 				<jsp:useBean id="yijia_name" class="com.list.DataLList" scope="request"></jsp:useBean>
 				
 				<%
@@ -169,10 +187,11 @@ font-weight:900
 				<div class="head_pos">	
 				医家查询
 				<input type="text" size="50" placeholder="请输入您想要查询的医家，支持姓名简拼全拼等方式输入！" name="select_yijia">
-				<input class="pos_abs" type="submit" value="提交">
+				<input type="submit" value="查询">
+				<a href="yijiatianjia.jsp" class="pos_abs1" >医家添加</a>
 				</div>
 				</form>
-				<a href="yijiatianjia.jsp" class="pos_abs1" >医家添加</a>
+				
 								
 				<div class="pos">
 				<p class="word"><%=yijia_title %></p>

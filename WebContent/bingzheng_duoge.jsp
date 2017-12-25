@@ -101,7 +101,7 @@
 				
 				
 				<div class="services">
-				
+				<img alt="header" src="images/header.png" height="80px" id="image" /> 
 				<div>
 					<form action="Select_bingzheng">
 						<div style="position: absolute;left: 300px;top: 70px;">

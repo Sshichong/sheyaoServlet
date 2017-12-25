@@ -2,10 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@page import="java.sql.*" %>
-   <%--  <%
+    <%
     request.setCharacterEncoding("utf-8");
     response.setCharacterEncoding("utf-8");
-    %> --%>
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,8 +37,6 @@
 			});
 		});
 </script>
-
-<!--//end-smoth-scrolling-->
 <style type="text/css">
 .yangshi{
 background-color: #F0F0F0;
@@ -52,6 +50,7 @@ float:left;
 clear:both;
 }
 </style>
+<!--//end-smoth-scrolling-->
 </head>
 <body>
 	<div class="container-fluid" >
@@ -97,21 +96,113 @@ clear:both;
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main about-main">
 			
 				<div class="about">
-					
+					<img alt="header" src="images/header.png" height="80px" id="image" /> 
 					<div class="clearfix">
 					<div class=neirong>
-	<div class="xinxitianjia" >
-	<a href="sheyao.jsp">完成</a><br><br>
-		<form action="medicineCheckServlet" method="post" >
-		<div style="float:left;margin-left:150px">
-		<div id="zhengming">
-		正名：<input type="text" size="25" name="zhengming"/>
+					<form action="medicineCheckServlet" method="post">
+							<div id="jibenxnxi" style="border: 1px #A9A9A9 solid;width:80%; margin: 30px auto;">
+								<div style="width: 38%; margin: 0 auto;">
+									<h1>基本信息</h1>
+									<hr>
+									<div id="zhengming">
+										正名：<input type="text" size="25" name="zhengming" />
+									</div>
+									<div id="yiming" style="padding-top: 10px">
+										异名：<input type="button" value="增加" id="another" />
+												<div id="ym">
+												</div>
+									</div>
+									<div id="yaoxing" style="padding-top: 10px">
+										药性：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<select
+											name="yaoxing">
+											<option value="yinyao">阴药</option>
+											<option value="yangyao">阳药</option>
+										</select>
+									</div>
+									<div id="leibie" style="padding-top: 10px">
+										植物类别：<select name="leibie">
+											<option value="2">菌类植物</option>
+											<option value="3">地衣类植物</option>
+											<option value="5">蕨类类植物</option>
+											<option value="6">裸子类植物</option>
+											<option value="7">双子叶类植物</option>
+										</select>
+									</div>
+									<div id="yuanzhiwujieshao" style="padding-top: 10px">
+										<div style="center;padding-top:10px">原植物介绍：</div>
+										<textarea rows="5" cols="50" style="width:100%;" name="yuanzhiwujieshao"></textarea>
+									</div>
+									<div id="shengjingfenbu" style="padding-top: 10px">
+										<div style="center;padding-top:10px">生境分布：</div>
+										<textarea rows="5" cols="50" style="width:100%;" name="shengjingfenbu"></textarea>
+									</div>
+									<div id="caijijiagong" style="padding-top: 10px">
+										<div style="center;padding-top:10px" style="width:100%;" >采集加工：</div>
+										<textarea rows="5" cols="50"  style="width:100%;" name="caijijiagong"></textarea>
+									</div>
+								</div>
+							</div>
+
+
+<div id="fujiaxinxi" style="border: 1px #A9A9A9 solid;width:80%; margin: 30px auto;">
+								<div style="width: 38%; margin: 0 auto;">
+									<h1>附加信息</h1>
+									<hr>
+		<div>
+		<div id="zhuyishixiang" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px">注意事项：</div><textarea rows="5" cols="50" style="width:100%;" name="zhuyishixiang"></textarea>
 		</div>
-		<div id="yiming" style="padding-top:10px">
-		异名：<input type="button" value="增加" id="another" />
-		<div id="ym">
+		<div id="huaxuechengfen" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px" >化学成分（分号隔开）：
+		<textarea rows="5" cols="50" style="width:100%;"  name="huaxuechengfen"></textarea>
 		</div>
-				<script type="text/javascript">
+		</div>
+		<div id="huaxuechengfencankaowenxian" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px">化学成分参考文献（分号隔开）：</div><textarea rows="5" cols="50" style="width:100%;" name="huaxuechengfencankaowenxian"></textarea>
+		</div>
+		<div id="xiandailinchuangyanjiucankaowenxian" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px">现代临床研究参考文献（分号隔开）：</div><textarea rows="5" cols="50"  style="width:100%;" name="xiandailinchuangyanjiucankaowenxian"></textarea>
+		</div>
+		<div id="yaolicankaowenxian" style="padding-top:10px">
+		<div style="text-align="center;padding-top:10px">药理参考文献（分号隔开）：</div><textarea rows="5" cols="50" style="width:100%;" name="yaolicankaowenxian"></textarea>
+		</div>
+		</div>
+				<div>
+			畲药药方：<input type="button" id="add" value="增加一条" />
+			<div id="yaofang">
+				<input type="50" name="yaofang" size="50"/><br />
+			</div>
+			<br />
+		</div>
+							</div>
+							</div>
+							<div style="width: 15%; margin: 0 auto;margin-top:20px">
+							<input type="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重置" />
+							</div>
+							
+		</form>					
+
+		</form>
+	</div>
+</div>
+					 </div>
+				</div>
+				
+
+				
+			</div>
+			<div class="clearfix"> </div>				
+		</div>
+	</div>
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.js"> </script>
+    
+    <!-- 异名添加 -->
+    <script type="text/javascript">
 			$("#another").click(function(){
 			var str=prompt();
 			if(str){
@@ -169,117 +260,7 @@ clear:both;
 			})
 			//console.log($("button").last().html())
 		</script>
-		
-		</div>
-		<div id="yaoxing" style="padding-top:10px">
-		药性：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="yaoxing" >
-							<option value="yinyao">阴药</option>
-							<option value="yangyao">阳药</option>
-						</select>
-		</div>
-		<div id="leibie" style="padding-top:10px">
-		植物类别：<select name="leibie">
-							<option value="2">菌类植物</option>
-							<option value="3">地衣类植物</option>
-							<option value="5">蕨类类植物</option>
-							<option value="6">裸子类植物</option>
-							<option value="7">双子叶类植物</option>
-							</select>
-		</div>
-		<div id="yuanzhiwujieshao" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">原植物介绍：</div><textarea rows="5" cols="50" name="yuanzhiwujieshao"></textarea>
-		</div>
-		<div id="shengjingfenbu" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">生境分布：</div><textarea rows="5" cols="50" name="shengjingfenbu"></textarea>
-		</div>
-		<div id="caijijiagong" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">采集加工：</div><textarea rows="5" cols="50" name="caijijiagong"></textarea>
-		</div>
-		
-		<div id="zhuyishixiang" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">注意事项：</div><textarea rows="5" cols="50" name="zhuyishixiang"></textarea>
-		</div>
-		<div id="huaxuechengfen" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">化学成分（分号隔开）：
-		</div><textarea rows="5" cols="50" name="huaxuechengfen"></textarea>
-		</div>
-		<div id="huaxuechengfencankaowenxian" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">化学成分参考文献（分号隔开）：</div><textarea rows="5" cols="50" name="huaxuechengfencankaowenxian"></textarea>
-		</div>
-		<div id="xiandailinchuangyanjiucankaowenxian" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">现代临床研究参考文献（分号隔开）：</div><textarea rows="5" cols="50" name="xiandailinchuangyanjiucankaowenxian"></textarea>
-		</div>
-		<div id="yaolicankaowenxian" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">药理参考文献（分号隔开）：</div><textarea rows="5" cols="50" name="yaolicankaowenxian"></textarea>
-		</div>
-		<div>
-			畲药药方：<input type="button" id="add" value="增加一条" />
-			<div id="yaofang">
-				<input type="50" name="yaofang" size="50"/><br />
-			</div>
-			<br />
-		</div>
-<!-- 
-										<div>
-											<div id="tu1" style="padding-top: 10px">
-												植物种子图片：<input type="file" name="new_image" id="doc" value=""
-													onchange="javascript:setImagePreview();" />
-												<div id="localImag">
-													<img id="preview" width=-1 height=-1 style="diplay: none" />
-												</div>
-											</div>
-										</div>-->
-										<input type="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重置" />
-		</div>
-		<div style="float:left">
-		<img alt="sheyaotianjia" src="picture/sheyaotianjia.png" style="margin-left:250px">
-		</div> 
-		
-			<!-- <table >
-				<tr><td>正名</td><td><input name="zhengming"></td></tr>
-				<tr><td>异名</td><td><input name="yiming"></td></tr>
-				<tr><td>全拼</td><td><input name="quanpin"></td></tr>
-				<tr><td>简拼</td><td><input name="jianpin"></td></tr>
-				<tr><td>异名全拼</td><td><input name="yimingquanpin"></td></tr>
-				<tr><td>异名简拼</td><td><input name="yimingjianpin"></td></tr>
-				<tr><td>药性</td>
-					<td><select name="yaoxing">
-							<option value="yinyao">阴药</option>
-							<option value="yangyao">阳药</option>
-						</select></td></tr>
-				<tr><td>类别</td>
-						<td><select name="leibie">
-							<option value="2">菌类植物</option>
-							<option value="3">地衣类植物</option>
-							<option value="5">蕨类类植物</option>
-							<option value="6">裸子类植物</option>
-							<option value="7">双子叶类植物</option>
-							</select></td></tr>
-				<tr><td>原植物介绍</td><td><input name="yuanzhiwujieshao" type="text"></td></tr>
-				<tr><td>生境分布</td><td><input name="shengjingfenbu" type="text"></td></tr>
-				<tr><td>采集加工</td><td><input name="caijijiagong" type="text"></td></tr>
-				<tr><td></td><td><input type="button" id="add" value="添加一条"/><td></tr>
-				<tr><td>奢药药方</td><td> <textarea rows="10" cols="21" name="sheyaoyaofang"></textarea> </td></tr>
-				<tr><td>奢药药方</td><td id="td"><input type="text" name="yaofang" /><br/></td></tr>
-				<tr><td><input type="submit" value="添加" /></td></tr>
-			</table> -->
-		</form>
-	</div>
-</div>
-					 </div>
-				</div>
-				
-
-				
-			</div>
-			<div class="clearfix"> </div>				
-		</div>
-	</div>
-
-<!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.js"> </script>
+		<!-- 药方添加 -->
     <script>
     add.onclick=function(){
     	/* var input=document.getElementById("td");
@@ -293,28 +274,29 @@ clear:both;
             document.getElementById("yaofang").appendChild(br);
     }
 
-//     $(function(){
-//     	$("#another").click(function(){
-//         	//var anotherName = prompt("异名：");
-//         	var name= $("#ym").val();
-//         	var anotherName =prompt("异名：");
-//         	if(name==""){
-//         		name+=anotherName;
-//         	}
-//         	else{
-//         		name=name+";";
-//             	name+=anotherName;
-//         	}
+/*     $(function(){
+    	$("#another").click(function(){
+        	//var anotherName = prompt("异名：");
+        	var name= $("#ym").val();
+        	var anotherName =prompt("异名：");
+        	if(name==""){
+        		name+=anotherName;
+        	}
+        	else{
+        		name=name+";";
+            	name+=anotherName;
+        	}
         		
         	
         	
-//         	$("#ym").val(name);
-//         	//alert(name);
-//         });
-//     });
+        	$("#ym").val(name);
+        	//alert(name);
+        });
+    }); */
     
     
     </script>
+    <!-- 添加图片时显示缩略图 -->
     <script> 
 	function setImagePreview() {
 		var docObj = document.getElementById("doc");
@@ -348,7 +330,8 @@ clear:both;
 		}
 		return true;
 	}
-</script> 
+</script>
+<!-- 控制输入 -->
 <script type="text/javascript">
 			
 		$("form").on("submit",function(e){
@@ -398,6 +381,6 @@ clear:both;
 			}
 		})
 		
-	</script>
+	</script> 
 </body>
 </html>

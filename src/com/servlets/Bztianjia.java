@@ -59,6 +59,8 @@ public class Bztianjia extends HttpServlet {
 			return;
 		}
 		
+		System.out.println(bzQP+" "+bzJp);
+		
 		//处理数据
 		//转译中文字符
 		bzName = ZhuanyiChinese.changeChinese(bzName);
@@ -66,32 +68,46 @@ public class Bztianjia extends HttpServlet {
 		bzKs = ZhuanyiChinese.changeChinese(bzKs);
 		bzJp = ZhuanyiChinese.changeChinese(bzJp);
 		bzJj = ZhuanyiChinese.changeChinese(bzJj);
+		bzQP = bzQP.replace(" ", "");
+		bzJp = bzJp.replace(" ", "");
 		
+		
+		DataProcess dataProcess  = new DataProcess();
+		
+		
+		if(bzFZ!=null||!bzFZ.equals("")){
+			
 		bzFZ = ZhuanyiChinese.changeChinese(bzFZ);
 		String[] aa = bzFZ.split(";");
 		
-		System.out.println(bzFZ);
 		
-		DataProcess dataProcess  = new DataProcess();
+		
 		Vector x1 = new Vector();
 		Vector x2 = new Vector();
 		StringBuffer fangzis = new StringBuffer();
  		for(int i =0 ; i < aa.length;i++){
 			x1 = dataProcess.getData("select Prescription_ID from prescription where Prescription_particulars like '"+aa[i].trim()+"'");
+			if(x1.size()==0){
+				continue;
+			}
 			x2 = (Vector)x1.get(0);
 			fangzis = fangzis.append((String)x2.get(0)+";");
-			//System.out.println(fangzis);
+			System.out.println(fangzis);
 		}
+ 		dataProcess.update("insert into disease(Disease_name,Disease_department,Disease_introduce,Disease_treatment,Disease_forSelect) values ('"+bzName+"' ,'"+bzKs+"' , '"+bzJj+"' ,'"+fangzis.toString()+"','"+bzQP+";"+bzJp+"')");
+ 		response.sendRedirect("bzsuccess.jsp");
+ 		return;
 		
+		}
 		
 		//向数据库写入数据
 		
-		dataProcess.update("insert into disease(Disease_name,Disease_department,Disease_introduce,Disease_treatment,Disease_forSelect) values ('"+bzName+"' ,'"+bzKs+"' , '"+bzJj+"' ,'"+fangzis.toString()+"','"+bzQP+";"+bzJp+"')");
+		dataProcess.update("insert into disease(Disease_name,Disease_department,Disease_introduce,Disease_forSelect) values ('"+bzName+"' ,'"+bzKs+"' , '"+bzJj+"' ,'"+bzQP+";"+bzJp+"')");
 		
 		response.sendRedirect("bingzheng.jsp");
 		
 	
-		
+
 		
 		
 	}

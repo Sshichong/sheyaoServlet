@@ -202,7 +202,7 @@ for(int i=0;i<vector.size();i++){
 					
 				%>
 				<div class="services">
-				<h1>畲药</h1>
+				<!-- <h1>畲药</h1> -->
 				<form action="QueryServlet" method="post">
 				<div align="center">
 				搜索畲药：<input id="select" type="text" name="select" placeholder="请输入正名，异名，全拼或简拼" style="margin-left: 10px; margin-top: 50px; width: 400px;"/><input id="submit" type="submit" value="搜索"/>
