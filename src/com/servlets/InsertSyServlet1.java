@@ -1,6 +1,8 @@
 package com.servlets;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.beans.pinyinTool;
 import com.db.DataProcess;
 
 /**
@@ -55,6 +56,11 @@ public class InsertSyServlet1 extends HttpServlet {
 		String yaolicankaowenxian = request.getParameter("yaolicankaowenxian");
 		String forSelect =request.getParameter("forSelect");
 		
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		String date =df.format(new Date());
+		System.out.println(date);
+		System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+	    
 		System.out.println(yaoxing);
 		System.out.println(leibie);
 		System.out.println(forSelect);
@@ -100,7 +106,7 @@ public class InsertSyServlet1 extends HttpServlet {
 		}*/
 		
 		DataProcess data=new DataProcess();
-		String sql ="insert into medizin (Medizin_name,Medizin_anotherName,Medizin_property,Medizin_introduce,Medizin_distribution,Medizin_CollectionProcessing,Medizin_disease,Medizin_precautions,Medizin_ChemicalComponent,Medizin_ReferencesChemical,Medizin_ReferencesClinic,Medizin_ReferencesPharmacology,Medizin_planCategory,Medizin_forSelect) values('"+zhengming+"','"+yiming+"','"+yaoxing+"','"+yuanzhiwujieshao+"','"+shengjingfenbu+"','"+caijijiagong+"','1','"+zhuyishixiang+"','"+huaxuechengfen+"','"+huaxuechengfencankaowenxian+"','"+xiandailinchuangyanjiucankaowenxian+"','"+yaolicankaowenxian+"',"+leibie+",'"+forSelect+"')";
+		String sql ="insert into medizin (Medizin_name,Medizin_anotherName,Medizin_property,Medizin_introduce,Medizin_distribution,Medizin_CollectionProcessing,Medizin_disease,Medizin_precautions,Medizin_ChemicalComponent,Medizin_ReferencesChemical,Medizin_ReferencesClinic,Medizin_ReferencesPharmacology,Medizin_planCategory,Medizin_forSelect,Medizin_date) values('"+zhengming+"','"+yiming+"','"+yaoxing+"','"+yuanzhiwujieshao+"','"+shengjingfenbu+"','"+caijijiagong+"','1','"+zhuyishixiang+"','"+huaxuechengfen+"','"+huaxuechengfencankaowenxian+"','"+xiandailinchuangyanjiucankaowenxian+"','"+yaolicankaowenxian+"',"+leibie+",'"+forSelect+"','"+date+"')";
 		int num=data.update(sql);
 		if(num == 1){
 			response.sendRedirect("insertsysuccess.jsp");

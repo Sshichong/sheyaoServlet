@@ -21,8 +21,22 @@ public class Medizin {
 	private String medizin_plantWilting="";
 	private String medizin_plantImg="";
 	private String medizin_forSelect="";
+	private String medizin_date;
 	
 	
+	
+	public String getMedizin_date() {
+		return medizin_date;
+	}
+
+
+
+	public void setMedizin_date(String medizin_date) {
+		this.medizin_date = medizin_date;
+	}
+
+
+
 	public Medizin() {
 		super();
 		

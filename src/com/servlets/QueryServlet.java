@@ -53,7 +53,33 @@ public class QueryServlet extends HttpServlet {
 		//验证数据
 		//没有值
 		if(selectName==null||selectName.equals("")){
-			response.sendRedirect("sheyao.jsp");
+			DataProcess db=new DataProcess();
+			String sql ="select * from medizin";
+			Vector medizin =new Vector();
+			Vector medizin_ziji=new Vector();
+			List<Medizin> list =new ArrayList<Medizin>();
+			medizin =db.getData(sql);
+			System.out.println(medizin);
+			for(int i=0;i<medizin.size();i++) {
+				Medizin m=new Medizin();
+				medizin_ziji=(Vector)medizin.get(i);
+				m.setMedizin_name((String)medizin_ziji.get(1));
+				m.setMedizin_anotherName((String)medizin_ziji.get(2));
+				m.setMedizin_property((String)medizin_ziji.get(3));
+				m.setMedizin_introduce((String)medizin_ziji.get(4));
+				m.setMedizin_distribution((String)medizin_ziji.get(5));
+				m.setMedizin_collectionProcessing((String)medizin_ziji.get(6));
+				m.setMedizin_planCategory((String)medizin_ziji.get(13));
+				m.setMedizin_plantSeed((String)medizin_ziji.get(14));
+				m.setMedizin_plantJuvenile((String)medizin_ziji.get(15));
+				m.setMedizin_plantAdult((String)medizin_ziji.get(16));
+				m.setMedizin_date((String)medizin_ziji.get(20));
+				list.add(m);
+			}
+			request.setAttribute("quanbu", list);
+			RequestDispatcher dispatcher =request.getRequestDispatcher("sheyao.jsp");
+			dispatcher.forward(request, response);
+//			response.sendRedirect("sheyao.jsp");
 			return ;
 		}
 		

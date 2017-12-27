@@ -64,7 +64,7 @@ public class yijiaxianshi extends HttpServlet {
 		request.setAttribute("shanchang", sx);
 		request.setAttribute("grjj", doct_info);
 		request.setAttribute("PY", PY);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("yijiaxs.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("yijiaxianshi.jsp");
 		requestDispatcher.forward(request, response);
 	}
 

@@ -178,7 +178,7 @@ font-size:20px;
 <%-- 				<jsp:getProperty property="mess" name="messInfo"/> --%>
 				
 				<div style="width:80%; margin: 30px auto;">
-				<form action="Bztianjia" method="post">
+				<form action="bingzhengtianjiayanzheng.jsp" method="post">
 				
 				<input id="textForChuanshu" name="textForChuanshu"  style="display: none">
 				

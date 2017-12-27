@@ -48,7 +48,7 @@
 					<div class="nav1">
 						<ul class=" nav nav-sidebar">
 							<li class="active"><a href="index.jsp">主页</a></li>
-							<li><a href="sheyao.jsp">畲药</a></li>
+							<li><a href="QueryServlet">畲药</a></li>
 							<li><a href="bingzheng.jsp">病症</a></li>
 							<li><a href="yijia.jsp">医家</a></li>
 							<li><a href="minjianchufang.jsp">民间处方</a></li>

@@ -145,7 +145,7 @@ font-size:15px;
 					<div class="nav1">
 						<ul class=" nav nav-sidebar">
 							<li><a href="index.jsp">主页</a></li>
-							<li class="active"><a href="sheyao.jsp">畲药</a></li>
+							<li class="active"><a href="QueryServlet">畲药</a></li>
 							<li><a href="bingzheng.jsp">病症</a></li>
 							<li><a href="yijia.jsp">医家</a></li>
 							<li><a href="minjianchufang.jsp">民间处方</a></li>
@@ -308,6 +308,8 @@ for(int i=0;i<vector.size();i++){
 				<div id="content-right">
 					<%
 						List<Medizin> list = (List<Medizin>) request.getAttribute("yitiaojilu");
+						List<Medizin> qb =(List<Medizin>)request.getAttribute("quanbu");
+// 						out.print(qb);
 						if (list != null) {
 							for (Medizin m : list) {
 					%>
@@ -380,7 +382,62 @@ for(int i=0;i<vector.size();i++){
 						</div> --%>
 
 					<%}
-						}
+						}else if(qb!=null){%>
+						<table>
+							<tr><th colspan="2">最近添加</th></tr>
+							<%for(int i=qb.size()-1;i>=qb.size()-8;i--){
+								Medizin m=qb.get(i);%>
+									<tr><td width=50%><%=m.getMedizin_name()%></td><td width=30%><p text-color=#A9A9A9><%=m.getMedizin_date() %></p></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
+							<%	
+							}%>
+							
+					       </table>
+							<table>
+							<tr><th colspan="2">菌类植物</th></tr>
+							<%for(Medizin m:qb){
+								if(m.getMedizin_planCategory().equals("2")){%>
+									<tr><td width=80%><%=m.getMedizin_name()%></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
+							<%	}
+							}%>
+							
+					       </table>
+					       <table>
+							<tr><th colspan="2">地衣苔藓类植物</th></tr>
+							<%for(Medizin m:qb){
+								if(m.getMedizin_planCategory().equals("3")){%>
+									<tr><td width=80%><%=m.getMedizin_name()%></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
+							<%	}
+							}%>
+							
+					       </table>
+					        <table>
+							<tr><th colspan="2">蕨类植物</th></tr>
+							<%for(Medizin m:qb){
+								if(m.getMedizin_planCategory().equals("5")){%>
+									<tr><td width=80%><%=m.getMedizin_name()%></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
+							<%	}
+							}%>
+							
+					       </table>
+					        <table>
+							<tr><th colspan="2">裸子植物</th></tr>
+							<%for(Medizin m:qb){
+								if(m.getMedizin_planCategory().equals("6")){%>
+									<tr><td width=80%><%=m.getMedizin_name()%></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
+							<%	}
+							}%>
+							
+					       </table>
+					        <table>
+							<tr><th colspan="2">双子叶植物</th></tr>
+							<%for(Medizin m:qb){
+								if(m.getMedizin_planCategory().equals("7")){%>
+									<tr><td width=80%><%=m.getMedizin_name()%></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
+							<%	}
+							}%>
+							
+					       </table>
+						<%}
 						else{%>
 							<jsp:getProperty property="mess" name="messInfo"/>
 						<%}
