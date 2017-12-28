@@ -387,7 +387,7 @@ for(int i=0;i<vector.size();i++){
 							<tr><th colspan="2">最近添加</th></tr>
 							<%for(int i=qb.size()-1;i>=qb.size()-8;i--){
 								Medizin m=qb.get(i);%>
-									<tr><td width=50%><%=m.getMedizin_name()%></td><td width=30%><p text-color=#A9A9A9><%=m.getMedizin_date() %></p></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
+									<tr><td width=50%><%=m.getMedizin_name()%></td><td width=30%><p text-color=#A9A9A9><%=m.getMedizin_date() %></p></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>">修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
 							<%	
 							}%>
 							
@@ -396,7 +396,7 @@ for(int i=0;i<vector.size();i++){
 							<tr><th colspan="2">菌类植物</th></tr>
 							<%for(Medizin m:qb){
 								if(m.getMedizin_planCategory().equals("2")){%>
-									<tr><td width=80%><%=m.getMedizin_name()%></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
+									<tr><td width=80%><%=m.getMedizin_name()%></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>">修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
 							<%	}
 							}%>
 							
