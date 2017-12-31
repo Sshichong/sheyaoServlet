@@ -289,12 +289,25 @@ clear:both;
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/bootstrap.js"> </script>
       
-  	 <!-- 	<script type="text/javascript">
+   	 	<script type="text/javascript">
 			$(".a>.yangshi").dblclick(function (){
-				
+				var hid = $(this).next();
+				var ss = $("<input name='yiming' type='text' value='"+$(this).html()+"' >");
+				$(this).html("");
+				$(this).append(ss);
+				$(ss).focus();
+				//($(hid).attr("name"));
+				$(ss).on('blur',function(){
+					hid.val($(this).val());
+					$(ss).parent().html($(this).val());
+					$(this).remove();
+				})
+			})
+			$(".a>.yangshi1").click(function(){
+				$(this).parent().remove();
 			})
   	 	
-		</script> -->
+		</script>
 		
 		     <!-- 异名添加 -->
     <script type="text/javascript">

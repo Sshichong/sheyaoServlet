@@ -1,0 +1,143 @@
+@charset "UTF-8";
+.maindiv{
+	background: url(../images/beijing.jpeg)
+}
+.xuanfu{  
+        left: 0;  
+        position: fixed;  
+        top:0;
+        width: 100%;  
+        background-color: white;
+        z-index:1000;
+    }  
+.fl
+{
+    float:left;
+    }
+.fr
+{
+    float:right;
+    }
+.searchbar
+{
+   margin-left:2%;
+   margin-top:5px;
+   height:30px;
+   position:relative;
+    }
+.searchbar .field {*margin: -1px 0 0 -5px;padding:6px;background:#faf9f7;border:1px solid #ccc;color:#717171;-moz-border-radius: 2px; 
+                    -webkit-border-radius: 2px; border-radius:2px; width:200px;height:15px;}
+.searchbar .submit {width:29px;height:29px;background:url('../images/wenhao.png'); color:transparent;border:0px;position:absolute;
+                    left:180px;top:0px}
+.tubiao{
+	margin-top:5px;
+	margin-left:30%;
+	height:25px;
+	position:absolute;
+}
+.right{
+	margin-top:5px;
+	margin-left:90%;
+	position:absolute;
+}
+.center-div-top{
+	margin-top:33px;
+	margin-left:-1%;
+	position:absolute;
+	width:101%;
+	height:35%;
+	background-color: white;
+}
+.xinwenout{
+    margin-top:12%;
+	margin-left:5%;
+	position:absolute;
+	width:1000px;
+	height:32px;
+    overflow: hidden;
+}
+.xinweninnter{
+	width:1020px;
+	height:100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.cdc1{
+	position:absolute;
+	width:8%;
+	margin-top:20%;
+	height:16%; 
+	margin-left:14%;
+}
+.cdc2{
+	position:absolute;
+	width:8%;
+	margin-top:20%;
+	height:16%;  
+	margin-left:34%;
+}
+.cdc3{
+	position:absolute;
+	width:8%;
+	margin-top:20%;
+	height:16%;  
+	margin-left:55%;
+}
+.cdc4{
+	position:absolute;
+	width:8%;
+	margin-top:20%;
+	height:16%;  
+	margin-left:75%;
+}
+.center-div-bottom{
+	margin-top:30%;
+	margin-left:1%;
+	position:absolute;
+	height:50%;
+	width:97%;
+}
+.sou1{
+	top:10%;
+	left:35%;
+	position:absolute;
+	height:30px;
+	width:400px;
+}
+.sou2{
+	top:10%;
+	left:63.5%;
+	position:absolute;
+	height:35px;
+	width:35px;
+	background:url('../images/wenhao.png');
+}
+.wenzijieshao{
+	top:30%;
+	left:10%;
+	position:absolute;
+	height:90%;
+	width:80%;
+	font-size:150%;
+	font-family:"华文楷体";
+	
+}
+.cdti{
+	position:absolute;
+	margin-top:55px;
+	margin-left:10%;
+	width:35%;
+	height:35%;
+}
+.cdti2{
+	position:absolute;
+	margin-top:60px;
+	margin-left:4%;
+	width:6%;
+	height:25%;
+}
+.footer{
+	position:absolute;
+	margin-top:1000px;
+	margin-left:45%;
+}
