@@ -79,6 +79,7 @@ public class QueryServlet extends HttpServlet {
 				m.setMedizin_date((String)medizin_ziji.get(20));
 				m.setMedizin_deleteTag((String)medizin_ziji.get(21));
 				m.setMedizin_deleteReason((String)medizin_ziji.get(22));
+				m.setMedizin_mainUse((String)medizin_ziji.get(23));
 				list.add(m);
 			}
 			request.setAttribute("quanbu", list);
@@ -111,6 +112,7 @@ public class QueryServlet extends HttpServlet {
 				m.setMedizin_date((String)medizin_ziji.get(20));
 				m.setMedizin_deleteTag((String)medizin_ziji.get(21));
 				m.setMedizin_deleteReason((String)medizin_ziji.get(22));
+				m.setMedizin_mainUse((String)medizin_ziji.get(23));
 				list.add(m);
 			}
 			System.out.println("·ÖÀà"+list);
@@ -152,6 +154,10 @@ public class QueryServlet extends HttpServlet {
 				m.setMedizin_plantSeed((String)medizin_ziji.get(14));
 				m.setMedizin_plantJuvenile((String)medizin_ziji.get(15));
 				m.setMedizin_plantAdult((String)medizin_ziji.get(16));
+				m.setMedizin_date((String)medizin_ziji.get(20));
+				m.setMedizin_deleteTag((String)medizin_ziji.get(21));
+				m.setMedizin_deleteReason((String)medizin_ziji.get(22));
+				m.setMedizin_mainUse((String)medizin_ziji.get(23));
 				list.add(m);
 				//System.out.println(m.getMedizin_plantSeed());
 			}
@@ -175,6 +181,10 @@ public class QueryServlet extends HttpServlet {
 			m.setMedizin_plantSeed((String)medizin_ziji.get(14));
 			m.setMedizin_plantJuvenile((String)medizin_ziji.get(15));
 			m.setMedizin_plantAdult((String)medizin_ziji.get(16));
+			m.setMedizin_date((String)medizin_ziji.get(20));
+			m.setMedizin_deleteTag((String)medizin_ziji.get(21));
+			m.setMedizin_deleteReason((String)medizin_ziji.get(22));
+			m.setMedizin_mainUse((String)medizin_ziji.get(23));
 			list.add(m);
 			
 			request.setAttribute("yitiaojilu", list);

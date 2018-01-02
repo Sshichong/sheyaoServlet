@@ -50,11 +50,12 @@ public class modifySyCheckServlet extends HttpServlet {
 		String yuanzhiwujieshao = request.getParameter("yuanzhiwujieshao");
 		String shengjingfenbu = request.getParameter("shengjingfenbu");
 		String caijijiagong = request.getParameter("caijijiagong");
-		String zhuyishixiang = request.getParameter("zhuyishixiang");
+		/*String zhuyishixiang = request.getParameter("zhuyishixiang");
 		String huaxuechengfen =request.getParameter("huaxuechengfen");
 		String huaxuechengfencankaowenxian = request.getParameter("huaxuechengfencankaowenxian");
 		String xiandailinchuangyanjiucankaowenxian =request.getParameter("xiandailinchuangyanjiucankaowenxian");
-		String yaolicankaowenxian = request.getParameter("yaolicankaowenxian");
+		String yaolicankaowenxian = request.getParameter("yaolicankaowenxian");*/
+		String zhuzhiyongfa =request.getParameter("zhuzhiyongfa");
 		
 		System.out.println(leibie);
 		//处理数据
@@ -142,11 +143,12 @@ public class modifySyCheckServlet extends HttpServlet {
 		medizin.setMedizin_introduce(yuanzhiwujieshao);
 		medizin.setMedizin_collectionProcessing(caijijiagong);
 		medizin.setMedizin_distribution(shengjingfenbu);
-		medizin.setMedizin_precautions(zhuyishixiang);
+		/*medizin.setMedizin_precautions(zhuyishixiang);
 		medizin.setMedizin_chemicalComponent(huaxuechengfen);
 		medizin.setMedizin_referencesChemical(huaxuechengfencankaowenxian);
 		medizin.setMedizin_referencesClinic(xiandailinchuangyanjiucankaowenxian);
-		medizin.setMedizin_referencesPharmacology(yaolicankaowenxian);
+		medizin.setMedizin_referencesPharmacology(yaolicankaowenxian);*/
+		medizin.setMedizin_mainUse(zhuzhiyongfa);
 		medizin.setMedizin_forSelect(forSelect.toString());
 		
 		request.setAttribute("medizin", medizin);

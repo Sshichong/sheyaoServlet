@@ -337,7 +337,7 @@ for(int i=0;i<vector.size();i++){
 						</div>
 
 						<div class=pos1>
-							<p class="word2">原植物介绍</p>
+							<p class="word2">原植物</p>
 							<div style="border:1px #A9A9A9 solid; width:100%; height:200px"><%=m.getMedizin_introduce()%></div>
 						</div>
 						<div class="pos">
@@ -348,15 +348,15 @@ for(int i=0;i<vector.size();i++){
 
 						</div>
 						<div class="pos">
-							<p class="word2">采集加工</p>
+							<p class="word2">采收加工</p>
 							<p class="word3">
 								<%=m.getMedizin_collectionProcessing()%>
 							</p>
 
 						</div>
 						<div class=pos1>
-							<p class="word2">畲药应用</p>
-							<div style="border:1px #A9A9A9 solid; width:100%; height:200px">药方</div>
+							<p class="word2">主治用法</p>
+							<div style="border:1px #A9A9A9 solid; width:100%; height:200px"><%=m.getMedizin_mainUse() %></div>
 						</div>
 					</div>
 				
@@ -396,29 +396,53 @@ for(int i=0;i<vector.size();i++){
 
 					<%}
 						}else if(qb!=null){%>
-						<table border="1" >
-						<col style="width: 7%" />  <!-- 畲药名 -->
-							<col style="width: 8%" />  <!--异名  -->
-							<col style="width: 10%" />  <!--畲药药性  -->
-							<col style="width: 15%" /> <!--采收加工  -->
-							<col style="width: 25%" /> <!-- 原植物  -->
-							<col style="width: 10%" /> <!--状态  -->
-							<col style="width: 25%" /> <!--主要操作  -->
-							<tr><th colspan="7">最近添加</th></tr>
-							<tr><th >畲药名</th><th>异名</th><th >畲药药性</th><th>采收加工</th><th >原植物</th><th >状态</th><th >主要操作</th></tr>
-							<%for(int i=qb.size()-1;i>=qb.size()-8;i--){
-								Medizin m=qb.get(i);
-								if(m.getMedizin_deleteTag()==null||m.getMedizin_deleteTag().equals("")){%>
-									<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
-								<%}else{%>
-									<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ><%=m.getMedizin_deleteTag() %></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
-								<%}%>
-									
-							<%	
+					<table border="1" style="width: 100%">
+						<col style="width: 7%" />
+						<!-- 畲药名 -->
+						<col style="width: 8%" />
+						<!--异名  -->
+						<col style="width: 10%" />
+						<!--畲药药性  -->
+						<col style="width: 25%" />
+						<!-- 原植物  -->
+						<col style="width: 20%" />
+						<!--时间  -->
+						<col style="width: 25%" />
+						<!--主要操作  -->
+						<tr>
+							<th colspan="6">最近添加</th>
+						</tr>
+						<tr>
+							<th>畲药名</th>
+							<th>异名</th>
+							<th>畲药药性</th>
+							<th>原植物</th>
+							<th>添加时间</th>
+							<th>主要操作</th>
+						</tr>
+						<%
+							for (int i = qb.size() - 1; i >= qb.size() - 3; i--) {
+									Medizin m = qb.get(i);
+						%>
+						<tr>
+							<td><%=m.getMedizin_name()%></td>
+							<td><%=m.getMedizin_anotherName()%></td>
+							<td><%=m.getMedizin_property()%></td>
+							<td><%=m.getMedizin_introduce()%></td>
+							<td><%=m.getMedizin_date()%></td>
+							<td><a href="QueryServlet?select=<%=m.getMedizin_name()%>"
+								target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a
+								href="modifyServlet?select=<%=m.getMedizin_name()%>"
+								target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a
+								href="deleteServlet?select=<%=m.getMedizin_name()%>">删除</a>&nbsp;&nbsp;&nbsp;<a>恢复</a></td>
+						</tr>
+
+						<%	
 							}%>
-							
-					       </table>
-							<table border="1" style="width:100%" >
+
+					</table>
+
+					<table border="1" style="width:100%" >
 							<col style="width: 7%" />  <!-- 畲药名 -->
 							<col style="width: 8%" />  <!--异名  -->
 							<col style="width: 10%" />  <!--畲药药性  -->

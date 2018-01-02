@@ -24,11 +24,26 @@ public class Medizin {
 	private String medizin_date;
 	private String medizin_deleteTag;
 	private String medizin_deleteReason;
+	private String medizin_mainUse;
 	
 	
 	
 	
 	
+	
+	
+	public String getMedizin_mainUse() {
+		return medizin_mainUse;
+	}
+
+
+
+	public void setMedizin_mainUse(String medizin_mainUse) {
+		this.medizin_mainUse = medizin_mainUse;
+	}
+
+
+
 	public String getMedizin_deleteTag() {
 		return medizin_deleteTag;
 	}

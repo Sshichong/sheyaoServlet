@@ -55,6 +55,7 @@ public class InsertSyServlet1 extends HttpServlet {
 		String xiandailinchuangyanjiucankaowenxian =request.getParameter("xiandailinchuangyanjiucankaowenxian");
 		String yaolicankaowenxian = request.getParameter("yaolicankaowenxian");
 		String forSelect =request.getParameter("forSelect");
+		String zhuzhiyongfa =request.getParameter("zhuzhiyongfa");
 		
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 		String date =df.format(new Date());
@@ -106,7 +107,7 @@ public class InsertSyServlet1 extends HttpServlet {
 		}*/
 		
 		DataProcess data=new DataProcess();
-		String sql ="insert into medizin (Medizin_name,Medizin_anotherName,Medizin_property,Medizin_introduce,Medizin_distribution,Medizin_CollectionProcessing,Medizin_disease,Medizin_precautions,Medizin_ChemicalComponent,Medizin_ReferencesChemical,Medizin_ReferencesClinic,Medizin_ReferencesPharmacology,Medizin_planCategory,Medizin_forSelect,Medizin_date) values('"+zhengming+"','"+yiming+"','"+yaoxing+"','"+yuanzhiwujieshao+"','"+shengjingfenbu+"','"+caijijiagong+"','1','"+zhuyishixiang+"','"+huaxuechengfen+"','"+huaxuechengfencankaowenxian+"','"+xiandailinchuangyanjiucankaowenxian+"','"+yaolicankaowenxian+"',"+leibie+",'"+forSelect+"','"+date+"')";
+		String sql ="insert into medizin (Medizin_name,Medizin_anotherName,Medizin_property,Medizin_introduce,Medizin_distribution,Medizin_CollectionProcessing,Medizin_disease,Medizin_precautions,Medizin_ChemicalComponent,Medizin_ReferencesChemical,Medizin_ReferencesClinic,Medizin_ReferencesPharmacology,Medizin_planCategory,Medizin_forSelect,Medizin_date,Medizin_mainUse) values('"+zhengming+"','"+yiming+"','"+yaoxing+"','"+yuanzhiwujieshao+"','"+shengjingfenbu+"','"+caijijiagong+"','1','"+zhuyishixiang+"','"+huaxuechengfen+"','"+huaxuechengfencankaowenxian+"','"+xiandailinchuangyanjiucankaowenxian+"','"+yaolicankaowenxian+"',"+leibie+",'"+forSelect+"','"+date+"','"+zhuzhiyongfa+"')";
 		int num=data.update(sql);
 		if(num == 1){
 			response.sendRedirect("insertsysuccess.jsp");

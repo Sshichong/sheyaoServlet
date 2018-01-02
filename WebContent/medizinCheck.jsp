@@ -206,6 +206,10 @@ font-size:15px;
 						采收加工：<jsp:getProperty property="medizin_collectionProcessing"
 							name="medizin" />
 					</div>
+					<div>
+						主治用法：<jsp:getProperty property="medizin_mainUse"
+							name="medizin" />
+					</div>
 					<%-- <div>
 						注意事项：<jsp:getProperty property="medizin_precautions"
 							name="medizin" />
@@ -254,7 +258,8 @@ font-size:15px;
 							value="<jsp:getProperty property="medizin_referencesPharmacology" name="medizin"/>" />
 						<input name="forSelect" type="hidden"
 							value='<jsp:getProperty property="medizin_forSelect" name="medizin"/>'>
-
+						<input name="zhuzhiyongfa" type="hidden"
+							value='<jsp:getProperty property="medizin_mainUse" name="medizin"/>'>
 						<input type="button" name="back" value="修改"
 							onclick="javascript:history.go(-1);" /> <input type="submit"
 							value="确定">

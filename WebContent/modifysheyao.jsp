@@ -105,12 +105,16 @@ clear:both;
 					<div class="clearfix">
 					<div class=neirong>
 					<form action="modifySyCheckServlet" method="post">
-							<div id="jibenxnxi" style="border: 1px #A9A9A9 solid;width:80%; margin: 30px auto;">
-								<div style="width: 38%; margin: 0 auto;">
-									<h1>基本信息</h1>
+						<div style="width: 90%; margin: 0 auto;" >
+								
+<!-- 									<h1 style="width: 38%; margin: 0 auto;">基本信息</h1> -->
 									<hr>
+									<div>
+									<!--文字  -->
+									<div style="float:left;margin-top:25px;margin-left:10px">
+									
 									<div id="zhengming">
-										正名：<input type="text" size="25" name="zhengming" value=<%=m.getMedizin_name() %> />
+										畲族名：<input type="text" size="25" name="zhengming" value=<%=m.getMedizin_name() %> />
 									</div>
 									<%
 									String ym=m.getMedizin_anotherName();
@@ -123,7 +127,7 @@ clear:both;
 									%>
 									<div id="yiming" style="padding-top: 10px">
 										异名：<input type="button" value="增加" id="another" />
-												
+													
 												<%
 												for(int i=0;i<a.length;i++){%>
 												<div id="ym" class='a'>
@@ -133,9 +137,9 @@ clear:both;
 													</div>
 												<%}
 												%>
-												
 									</div>
-									<% String property =m.getMedizin_property();
+									<div id="yaoxing" style="padding-top: 10px">
+										<% String property =m.getMedizin_property();
 // 								       out.print(property); 
 									if(property.trim().equals("阴药")){%>
 										<div id="yaoxing" style="padding-top: 10px">
@@ -155,7 +159,9 @@ clear:both;
 									</div>
 									<%}
 									%>
-									<%
+									</div>
+									<div id="leibie" style="padding-top: 10px">
+										<%
 									if(m.getMedizin_planCategory().equals("2")){%>
 										<div id="leibie" style="padding-top: 10px">
 										植物类别：<select name="leibie">
@@ -208,68 +214,56 @@ clear:both;
 									</div>
 								<%	}
 									%>
-									<!-- <div id="leibie" style="padding-top: 10px">
-										植物类别：<select name="leibie">
-											<option value="2">菌类植物</option>
-											<option value="3">地衣类植物</option>
-											<option value="5">蕨类类植物</option>
-											<option value="6">裸子类植物</option>
-											<option value="7">双子叶类植物</option>
-										</select>
-									</div> -->
-									<div id="yuanzhiwujieshao" style="padding-top: 10px">
-										<div style="center;padding-top:10px">原植物介绍：</div>
+									</div>
+									<div id="shengjingfenbu" style="padding-top: 10px;clear:both;float:left">
+										<div style="center;padding-top:10px">生境分布：</div>
+										<textarea rows="5" cols="50" style="width:90%;" name="shengjingfenbu"><%=m.getMedizin_distribution() %></textarea>
+									</div>
+									</div>
+									
+									
+									<div style="float:left">
+									<div id="yuanzhiwujieshao" style="padding-top: 10px;float:left">
+										<div style="center;padding-top:10px">原植物：</div>
 										<textarea rows="5" cols="50" style="width:100%;" name="yuanzhiwujieshao"><%=m.getMedizin_introduce() %></textarea>
 									</div>
-									<div id="shengjingfenbu" style="padding-top: 10px">
-										<div style="center;padding-top:10px">生境分布：</div>
-										<textarea rows="5" cols="50" style="width:100%;" name="shengjingfenbu"><%=m.getMedizin_distribution() %></textarea>
+									<br>
+									<div id="caijijiagong" style="padding-top: 10px;float:left">
+										<div style="center;padding-top:10px" style="width:100%;" >采收加工：</div>
+										<textarea rows="5" cols="50"  style="width:100%;" name="caijijiagong"><%=m.getMedizin_collectionProcessing() %></textarea>
 									</div>
-									<div id="caijijiagong" style="padding-top: 10px">
-										<div style="center;padding-top:10px" style="width:100%;" >采集加工：</div>
-										<textarea rows="5" cols="50"  style="width:100%;" name="caijijiagong" ><%=m.getMedizin_collectionProcessing() %></textarea>
+									</div>
 									</div>
 								</div>
-							</div>
+								
+								
 
 
-<div id="fujiaxinxi" style="border: 1px #A9A9A9 solid;width:80%; margin: 30px auto;">
-								<div style="width: 38%; margin: 0 auto;">
-									<h1>附加信息</h1>
+
+<!--  <div id="zhuzhiyongfa" style="/* border: 1px #A9A9A9 solid; */width:100%; margin: 30px auto;margin-top:20px"> -->
+			<div style="clear:both;padding-top:20px;width: 90%;">
+<!-- 									<h1 style="width: 38%; margin: 0 auto;">主治用法</h1> -->
 									<hr>
-		<div>
-		<div id="zhuyishixiang" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">注意事项：</div><textarea rows="5" cols="50" style="width:100%;" name="zhuyishixiang"><%=m.getMedizin_precautions() %></textarea>
-		</div>
-		<div id="huaxuechengfen" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px" >化学成分（分号隔开）：
-		<textarea rows="5" cols="50" style="width:100%;"  name="huaxuechengfen"><%=m.getMedizin_chemicalComponent() %></textarea>
-		</div>
-		</div>
-		<div id="huaxuechengfencankaowenxian" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">化学成分参考文献（分号隔开）：</div><textarea rows="5" cols="50" style="width:100%;" name="huaxuechengfencankaowenxian"><%=m.getMedizin_referencesChemical() %></textarea>
-		</div>
-		<div id="xiandailinchuangyanjiucankaowenxian" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">现代临床研究参考文献（分号隔开）：</div><textarea rows="5" cols="50"  style="width:100%;" name="xiandailinchuangyanjiucankaowenxian"><%=m.getMedizin_referencesClinic() %></textarea>
-		</div>
-		<div id="yaolicankaowenxian" style="padding-top:10px">
-		<div style="text-align="center;padding-top:10px">药理参考文献（分号隔开）：</div><textarea rows="5" cols="50" style="width:100%;" name="yaolicankaowenxian"><%=m.getMedizin_referencesPharmacology() %></textarea>
-		</div>
-		</div>
-				<div>
-			畲药药方：<input type="button" id="add" value="增加一条" />
+		   <div  style="margin-left:50px;width: 90%;">
+		   主治用法：<input type="text" name="zhuzhiyongfa" size="50" value=<%=m.getMedizin_mainUse()%> />
+		   </div>
+			<div style="margin-left:50px;width: 90%;margin-top:20px">
+			           畲药用方：<input type="button" id="add" value="增加" />
 			<div id="yaofang">
-				<input type="50" name="yaofang" size="50"/><br />
+				<!-- <input type="50" name="yaofang" size="50"/><br /> -->
 			</div>
 			<br />
 		</div>
-							</div>
-							</div>
-							<div style="width: 15%; margin: 0 auto;margin-top:20px">
+		
+		
+			</div>
+</div>
+							
+							
+							
+							<div style="width: 20%; margin: 0 auto;margin-top:20px">
 							<input type="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重置" />
 							</div>
-							
-		</form>					
 
 		</form>
 	</div>

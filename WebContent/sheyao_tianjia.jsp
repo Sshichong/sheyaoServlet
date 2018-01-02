@@ -103,7 +103,7 @@ clear:both;
 
 								<div style="width: 90%; margin: 0 auto;" >
 								
-									<h1 style="width: 38%; margin: 0 auto;">基本信息</h1>
+<!-- 									<h1 style="width: 38%; margin: 0 auto;">基本信息</h1> -->
 									<hr>
 									<div>
 									<!--文字  -->
@@ -161,10 +161,12 @@ clear:both;
 
 <!--  <div id="zhuzhiyongfa" style="/* border: 1px #A9A9A9 solid; */width:100%; margin: 30px auto;margin-top:20px"> -->
 			<div style="clear:both;padding-top:20px;width: 90%;">
-									<h1 style="width: 38%; margin: 0 auto;">主治用法</h1>
+<!-- 									<h1 style="width: 38%; margin: 0 auto;">主治用法</h1> -->
 									<hr>
-		
-			<div style="margin-left:50px;width: 90%;">
+		   <div  style="margin-left:50px;width: 90%;">
+		   主治用法：<input type="text" name="zhuzhiyongfa" size="50"/>
+		   </div>
+			<div style="margin-left:50px;width: 90%;margin-top:20px">
 			           畲药用方：<input type="button" id="add" value="增加" />
 			<div id="yaofang">
 				<!-- <input type="50" name="yaofang" size="50"/><br /> -->

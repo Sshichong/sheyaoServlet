@@ -55,6 +55,7 @@ public class medicineCheckServlet extends HttpServlet {
 		String huaxuechengfencankaowenxian = request.getParameter("huaxuechengfencankaowenxian");
 		String xiandailinchuangyanjiucankaowenxian =request.getParameter("xiandailinchuangyanjiucankaowenxian");
 		String yaolicankaowenxian = request.getParameter("yaolicankaowenxian");
+		String zhuzhiyongfa =request.getParameter("zhuzhiyongfa");
 		
 		System.out.println(leibie);
 		//处理数据
@@ -148,6 +149,7 @@ public class medicineCheckServlet extends HttpServlet {
 		medizin.setMedizin_referencesClinic(xiandailinchuangyanjiucankaowenxian);
 		medizin.setMedizin_referencesPharmacology(yaolicankaowenxian);
 		medizin.setMedizin_forSelect(forSelect.toString());
+		medizin.setMedizin_mainUse(zhuzhiyongfa);
 		
 		request.setAttribute("medizin", medizin);
 		request.setAttribute("lb",lb );

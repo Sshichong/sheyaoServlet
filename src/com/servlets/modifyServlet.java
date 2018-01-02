@@ -63,6 +63,9 @@ public class modifyServlet extends HttpServlet {
 		m.setMedizin_plantJuvenile((String)medizin.get(15));
 		m.setMedizin_plantAdult((String)medizin.get(16));
 		m.setMedizin_date((String)medizin.get(20));
+		m.setMedizin_deleteTag((String)medizin.get(21));
+		m.setMedizin_deleteReason((String)medizin.get(22));
+		m.setMedizin_mainUse((String)medizin.get(23));
 		request.setAttribute("medizin", m);
 		String yaoxing="";
 		/*if(medizin.get(3).equals("“ı“©")) {

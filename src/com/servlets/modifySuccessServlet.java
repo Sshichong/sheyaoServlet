@@ -56,6 +56,7 @@ public class modifySuccessServlet extends HttpServlet {
 		String xiandailinchuangyanjiucankaowenxian =request.getParameter("xiandailinchuangyanjiucankaowenxian");
 		String yaolicankaowenxian = request.getParameter("yaolicankaowenxian");
 		String forSelect =request.getParameter("forSelect");
+		String zhuzhiyongfa =request.getParameter("zhuzhiyongfa");
 		
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 		String date =df.format(new Date());
@@ -73,7 +74,7 @@ public class modifySuccessServlet extends HttpServlet {
 		System.out.println(v.get(0));
 		int id=Integer.parseInt((String)v.get(0));
 		DataProcess data1=new DataProcess();
-		String sql1="update medizin set Medizin_name='"+zhengming+"',Medizin_anotherName='"+yiming+"',Medizin_property='"+yaoxing+"',Medizin_introduce='"+yuanzhiwujieshao+"',Medizin_distribution='"+shengjingfenbu+"',Medizin_CollectionProcessing='"+caijijiagong+"',Medizin_precautions='"+zhuyishixiang+"',Medizin_ChemicalComponent='"+huaxuechengfen+"',Medizin_ReferencesChemical='"+huaxuechengfencankaowenxian+"',Medizin_ReferencesClinic='"+xiandailinchuangyanjiucankaowenxian+"',Medizin_ReferencesPharmacology='"+yaolicankaowenxian+"',Medizin_planCategory="+leibie+",Medizin_forSelect='"+forSelect+"',Medizin_date='"+date+"' where Medizin_ID="+id+"";
+		String sql1="update medizin set Medizin_name='"+zhengming+"',Medizin_anotherName='"+yiming+"',Medizin_property='"+yaoxing+"',Medizin_introduce='"+yuanzhiwujieshao+"',Medizin_distribution='"+shengjingfenbu+"',Medizin_CollectionProcessing='"+caijijiagong+"',Medizin_precautions='"+zhuyishixiang+"',Medizin_ChemicalComponent='"+huaxuechengfen+"',Medizin_ReferencesChemical='"+huaxuechengfencankaowenxian+"',Medizin_ReferencesClinic='"+xiandailinchuangyanjiucankaowenxian+"',Medizin_ReferencesPharmacology='"+yaolicankaowenxian+"',Medizin_planCategory="+leibie+",Medizin_forSelect='"+forSelect+"',Medizin_date='"+date+"',Medizin_mainUse='"+zhuzhiyongfa+"' where Medizin_ID="+id+"";
 		int num=data1.update(sql1);
 		if(num==1) {
 			response.sendRedirect("modifysysuccess.jsp");
