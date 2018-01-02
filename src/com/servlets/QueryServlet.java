@@ -48,11 +48,14 @@ public class QueryServlet extends HttpServlet {
 		//request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		String selectName=request.getParameter("select");
+		String selectSort=request.getParameter("sort");
+		//int sort =Integer.parseInt(selectSort);
+		System.out.println(selectSort);
 		
 		MessInfo messInfo =new MessInfo();
 		//验证数据
 		//没有值
-		if(selectName==null||selectName.equals("")){
+		if((selectName==null||selectName.equals(""))&&(selectSort==null||selectSort.equals(""))){
 			DataProcess db=new DataProcess();
 			String sql ="select * from medizin";
 			Vector medizin =new Vector();
@@ -74,6 +77,8 @@ public class QueryServlet extends HttpServlet {
 				m.setMedizin_plantJuvenile((String)medizin_ziji.get(15));
 				m.setMedizin_plantAdult((String)medizin_ziji.get(16));
 				m.setMedizin_date((String)medizin_ziji.get(20));
+				m.setMedizin_deleteTag((String)medizin_ziji.get(21));
+				m.setMedizin_deleteReason((String)medizin_ziji.get(22));
 				list.add(m);
 			}
 			request.setAttribute("quanbu", list);
@@ -81,6 +86,40 @@ public class QueryServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 //			response.sendRedirect("sheyao.jsp");
 			return ;
+		}
+		if(selectName==null||selectName.equals("")){
+			DataProcess db=new DataProcess();
+			String sql ="select * from medizin where Medizin_planCategory ="+selectSort+"";
+			Vector medizin =new Vector();
+			Vector medizin_ziji=new Vector();
+			List<Medizin> list =new ArrayList<Medizin>();
+			medizin =db.getData(sql);
+			System.out.println(medizin);
+			for(int i=0;i<medizin.size();i++) {
+				Medizin m=new Medizin();
+				medizin_ziji=(Vector)medizin.get(i);
+				m.setMedizin_name((String)medizin_ziji.get(1));
+				m.setMedizin_anotherName((String)medizin_ziji.get(2));
+				m.setMedizin_property((String)medizin_ziji.get(3));
+				m.setMedizin_introduce((String)medizin_ziji.get(4));
+				m.setMedizin_distribution((String)medizin_ziji.get(5));
+				m.setMedizin_collectionProcessing((String)medizin_ziji.get(6));
+				m.setMedizin_planCategory((String)medizin_ziji.get(13));
+				m.setMedizin_plantSeed((String)medizin_ziji.get(14));
+				m.setMedizin_plantJuvenile((String)medizin_ziji.get(15));
+				m.setMedizin_plantAdult((String)medizin_ziji.get(16));
+				m.setMedizin_date((String)medizin_ziji.get(20));
+				m.setMedizin_deleteTag((String)medizin_ziji.get(21));
+				m.setMedizin_deleteReason((String)medizin_ziji.get(22));
+				list.add(m);
+			}
+			System.out.println("分类"+list);
+			request.setAttribute("fenlei", list);
+			RequestDispatcher dispatcher =request.getRequestDispatcher("sheyao.jsp");
+			dispatcher.forward(request, response);
+			return ;
+			
+			
 		}
 		
 		//转码

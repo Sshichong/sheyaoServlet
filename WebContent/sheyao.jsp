@@ -126,7 +126,18 @@ p.word3
 font-size:15px;
 	
 }
-
+td {
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+}
+table{
+        table-layout:fixed;
+        word-wrap:break-word;
+        margin-top:20px;
+        word-wrap: break-word; 
+        word-break: break-all;
+}
 </style>
 
 <!--//end-smoth-scrolling-->
@@ -213,7 +224,7 @@ for(int i=0;i<vector.size();i++){
 				</div>
 				<div id="aside" >
 					<details>
-						<summary><a href="#">菌类植物</a></summary>
+						<summary><a href="QueryServlet?sort=2" style="color:black">菌类植物</a></summary>
 						<ul>
 
 							<%
@@ -234,7 +245,7 @@ for(int i=0;i<vector.size();i++){
 						</ul>
 					</details>
 					<details>
-						<summary>地衣苔藓类植物</summary>
+						<summary><a href="QueryServlet?sort=3" style="color:black">地衣苔藓类植物</a></summary>
 						<ul>
 
 							<%
@@ -254,7 +265,7 @@ for(int i=0;i<vector.size();i++){
 						</ul>
 					</details>
 					<details>
-						<summary>蕨类植物</summary>
+						<summary><a href="QueryServlet?sort=5" style="color:black">蕨类植物</a></summary>
 						<ul>
 							<%
 						for (int i = 0; i < vector.size(); i++) {
@@ -269,7 +280,7 @@ for(int i=0;i<vector.size();i++){
 						</ul>
 					</details>
 					<details>
-						<summary>裸子植物</summary>
+						<summary><a href="QueryServlet?sort=6" style="color:black">裸子植物</a></summary>
 						<ul>
 
 
@@ -285,7 +296,7 @@ for(int i=0;i<vector.size();i++){
 						</ul>
 					</details>
 					<details>
-						<summary>双子叶植物</summary>
+						<summary><a href="QueryServlet?sort=7" style="color:black">双子叶植物</a></summary>
 						<ul>
 							<%
 						for (int i = 0; i < vector.size(); i++) {
@@ -309,6 +320,8 @@ for(int i=0;i<vector.size();i++){
 					<%
 						List<Medizin> list = (List<Medizin>) request.getAttribute("yitiaojilu");
 						List<Medizin> qb =(List<Medizin>)request.getAttribute("quanbu");
+						List<Medizin> fl =(List<Medizin>)request.getAttribute("fenlei");
+// 						out.print(fl);
 // 						out.print(qb);
 						if (list != null) {
 							for (Medizin m : list) {
@@ -383,60 +396,181 @@ for(int i=0;i<vector.size();i++){
 
 					<%}
 						}else if(qb!=null){%>
-						<table>
-							<tr><th colspan="2">最近添加</th></tr>
+						<table border="1" >
+						<col style="width: 7%" />  <!-- 畲药名 -->
+							<col style="width: 8%" />  <!--异名  -->
+							<col style="width: 10%" />  <!--畲药药性  -->
+							<col style="width: 15%" /> <!--采收加工  -->
+							<col style="width: 25%" /> <!-- 原植物  -->
+							<col style="width: 10%" /> <!--状态  -->
+							<col style="width: 25%" /> <!--主要操作  -->
+							<tr><th colspan="7">最近添加</th></tr>
+							<tr><th >畲药名</th><th>异名</th><th >畲药药性</th><th>采收加工</th><th >原植物</th><th >状态</th><th >主要操作</th></tr>
 							<%for(int i=qb.size()-1;i>=qb.size()-8;i--){
-								Medizin m=qb.get(i);%>
-									<tr><td width=50%><%=m.getMedizin_name()%></td><td width=30%><p text-color=#A9A9A9><%=m.getMedizin_date() %></p></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>">修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
+								Medizin m=qb.get(i);
+								if(m.getMedizin_deleteTag()==null||m.getMedizin_deleteTag().equals("")){%>
+									<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+								<%}else{%>
+									<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ><%=m.getMedizin_deleteTag() %></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+								<%}%>
+									
 							<%	
 							}%>
 							
 					       </table>
-							<table>
-							<tr><th colspan="2">菌类植物</th></tr>
+							<table border="1" style="width:100%" >
+							<col style="width: 7%" />  <!-- 畲药名 -->
+							<col style="width: 8%" />  <!--异名  -->
+							<col style="width: 10%" />  <!--畲药药性  -->
+							<col style="width: 15%" /> <!--采收加工  -->
+							<col style="width: 25%" /> <!-- 原植物  -->
+							<col style="width: 10%" /> <!--状态  -->
+							<col style="width: 25%" /> <!--主要操作  -->
+
+							<tr><th colspan="7">菌类植物</th></tr>
+							<tr><th >畲药名</th><th>异名</th><th >畲药药性</th><th>采收加工</th><th >原植物</th><th >状态</th><th >主要操作</th></tr>
 							<%for(Medizin m:qb){
-								if(m.getMedizin_planCategory().equals("2")){%>
-									<tr><td width=80%><%=m.getMedizin_name()%></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>">修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
+								if(m.getMedizin_planCategory().equals("2")){
+									if(m.getMedizin_deleteTag()==null||m.getMedizin_deleteTag().equals("")){%>
+										<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+									<%}else{%>
+										<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ><%=m.getMedizin_deleteTag() %></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+								<%	}
+								%>
+									
 							<%	}
 							}%>
 							
 					       </table>
-					       <table>
-							<tr><th colspan="2">地衣苔藓类植物</th></tr>
+					       <table border="1" style="width:100%" >
+							<col style="width: 7%" />  <!-- 畲药名 -->
+							<col style="width: 8%" />  <!--异名  -->
+							<col style="width: 10%" />  <!--畲药药性  -->
+							<col style="width: 15%" /> <!--采收加工  -->
+							<col style="width: 25%" /> <!-- 原植物  -->
+							<col style="width: 10%" /> <!--状态  -->
+							<col style="width: 25%" /> <!--主要操作  -->
+							<tr><th colspan="7">地衣苔藓类植物</th></tr>
+							<tr><th >畲药名</th><th>异名</th><th >畲药药性</th><th>采收加工</th><th >原植物</th><th >状态</th><th >主要操作</th></tr>
 							<%for(Medizin m:qb){
-								if(m.getMedizin_planCategory().equals("3")){%>
-									<tr><td width=80%><%=m.getMedizin_name()%></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
+								if(m.getMedizin_planCategory().equals("3")){
+									if(m.getMedizin_deleteTag()==null||m.getMedizin_deleteTag().equals("")){%>
+										<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+									<%}else{%>
+										<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ><%=m.getMedizin_deleteTag() %></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+								<%	}
+								%>
+									
+							<%	}
+							}%>
+					       </table>
+					       
+					        <table border="1" style="width:100%" >
+							<col style="width: 7%" />  <!-- 畲药名 -->
+							<col style="width: 8%" />  <!--异名  -->
+							<col style="width: 10%" />  <!--畲药药性  -->
+							<col style="width: 15%" /> <!--采收加工  -->
+							<col style="width: 25%" /> <!-- 原植物  -->
+							<col style="width: 10%" /> <!--状态  -->
+							<col style="width: 25%" /> <!--主要操作  -->
+							<tr><th colspan="7">蕨类植物</th></tr>
+							<tr><th >畲药名</th><th>异名</th><th >畲药药性</th><th>采收加工</th><th >原植物</th><th >状态</th><th >主要操作</th></tr>
+							<%for(Medizin m:qb){
+								if(m.getMedizin_planCategory().equals("5")){
+									if(m.getMedizin_deleteTag()==null||m.getMedizin_deleteTag().equals("")){%>
+										<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+									<%}else{%>
+										<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ><%=m.getMedizin_deleteTag() %></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+								<%	}
+								%>
+									
 							<%	}
 							}%>
 							
 					       </table>
-					        <table>
-							<tr><th colspan="2">蕨类植物</th></tr>
+					        <table border="1" style="width:100%" >
+							<col style="width: 7%" />  <!-- 畲药名 -->
+							<col style="width: 8%" />  <!--异名  -->
+							<col style="width: 10%" />  <!--畲药药性  -->
+							<col style="width: 15%" /> <!--采收加工  -->
+							<col style="width: 25%" /> <!-- 原植物  -->
+							<col style="width: 10%" /> <!--状态  -->
+							<col style="width: 25%" /> <!--主要操作  -->
+							<tr><th colspan="7">裸子植物</th></tr>
+							<tr><th >畲药名</th><th>异名</th><th >畲药药性</th><th>采收加工</th><th >原植物</th><th >状态</th><th >主要操作</th></tr>
 							<%for(Medizin m:qb){
-								if(m.getMedizin_planCategory().equals("5")){%>
-									<tr><td width=80%><%=m.getMedizin_name()%></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
+								if(m.getMedizin_planCategory().equals("6")){
+									if(m.getMedizin_deleteTag()==null||m.getMedizin_deleteTag().equals("")){%>
+										<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+									<%}else{%>
+										<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ><%=m.getMedizin_deleteTag() %></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+								<%	}
+								%>
+									
+							<%	}
+							}%>
+					       </table>
+					        <table border="1" style="width:100%" >
+							<col style="width: 7%" />  <!-- 畲药名 -->
+							<col style="width: 8%" />  <!--异名  -->
+							<col style="width: 10%" />  <!--畲药药性  -->
+							<col style="width: 15%" /> <!--采收加工  -->
+							<col style="width: 25%" /> <!-- 原植物  -->
+							<col style="width: 10%" /> <!--状态  -->
+							<col style="width: 25%" /> <!--主要操作  -->
+							<tr><th colspan="7">双子叶植物</th></tr>
+							<tr><th >畲药名</th><th>异名</th><th >畲药药性</th><th>采收加工</th><th >原植物</th><th >状态</th><th >主要操作</th></tr>
+							<%for(Medizin m:qb){
+								if(m.getMedizin_planCategory().equals("7")){
+									if(m.getMedizin_deleteTag()==null||m.getMedizin_deleteTag().equals("")){%>
+										<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+									<%}else{%>
+										<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ><%=m.getMedizin_deleteTag() %></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+								<%	}
+								%>
+									
 							<%	}
 							}%>
 							
 					       </table>
-					        <table>
-							<tr><th colspan="2">裸子植物</th></tr>
-							<%for(Medizin m:qb){
-								if(m.getMedizin_planCategory().equals("6")){%>
-									<tr><td width=80%><%=m.getMedizin_name()%></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
-							<%	}
-							}%>
+						<%}
+						else if(fl!=null){
+							Medizin medizin1 =(Medizin)fl.get(0);
+							String leiming =(String)medizin1.getMedizin_planCategory().trim();
+							if(leiming.equals("2")){
+								leiming="菌类植物";
+							}else if(leiming.equals("3")){
+								leiming="地衣苔藓类植物";
+							}else if(leiming.equals("5")){
+								leiming="蕨类植物";
+							}else if(leiming.equals("6")){
+								leiming="裸子植物";
+							}else if(leiming.equals("7")){
+								leiming="双子叶植物";
+							}
+						%>
+						
+							 <table border="1" style="width:100%" >
+							<col style="width: 7%" />  <!-- 畲药名 -->
+							<col style="width: 8%" />  <!--异名  -->
+							<col style="width: 10%" />  <!--畲药药性  -->
+							<col style="width: 15%" /> <!--采收加工  -->
+							<col style="width: 25%" /> <!-- 原植物  -->
+							<col style="width: 10%" /> <!--状态  -->
+							<col style="width: 25%" /> <!--主要操作  -->
+							<tr><th colspan="7"><%=leiming %></th></tr>
+							<tr><th >畲药名</th><th>异名</th><th >畲药药性</th><th>采收加工</th><th >原植物</th><th >状态</th><th >主要操作</th></tr>
+							<%for(Medizin m:fl){
+							if(m.getMedizin_deleteTag()==null||m.getMedizin_deleteTag().equals("")){%>
+								<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+						<%	}else{%>
+							<tr><td ><%=m.getMedizin_name() %></td><td><%=m.getMedizin_anotherName()%></td><td><%=m.getMedizin_property() %></td><td ><%=m.getMedizin_distribution() %></td><td ><%=m.getMedizin_introduce() %></td><td ><%=m.getMedizin_deleteTag() %></td><td ><a href="QueryServlet?select=<%=m.getMedizin_name()%>" target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a href="modifyServlet?select=<%=m.getMedizin_name()%>" target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a href="deleteServlet?select=<%=m.getMedizin_name()%>" >删除</a>&nbsp;&nbsp;&nbsp;<a  >恢复</a></td></tr>
+						<%}
+							%>
+								
+						<%	}%>
 							
-					       </table>
-					        <table>
-							<tr><th colspan="2">双子叶植物</th></tr>
-							<%for(Medizin m:qb){
-								if(m.getMedizin_planCategory().equals("7")){%>
-									<tr><td width=80%><%=m.getMedizin_name()%></td><td><a href="QueryServlet?select=<%=m.getMedizin_name()%>">详情</a>&nbsp;&nbsp;&nbsp;<a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td></tr>
-							<%	}
-							}%>
-							
-					       </table>
+							 </table>
 						<%}
 						else{%>
 							<jsp:getProperty property="mess" name="messInfo"/>

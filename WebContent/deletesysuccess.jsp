@@ -178,88 +178,21 @@ font-size:15px;
 				</div>
 
 				<div class="services">
-					<%
-						String leibie = (String) request.getAttribute("lb");
-					%>
-
-
-					<div>
-						畲族名：<jsp:getProperty property="medizin_name" name="medizin" />
-					</div>
-					<div>
-						异名：<jsp:getProperty property="medizin_anotherName" name="medizin" />
-					</div>
-					<div>
-						畲药药性：<jsp:getProperty property="medizin_property" name="medizin" />
-					</div>
-					<div>
-						植物类别：<%=leibie%>
-					</div>
-					<div>
-						原植物：<jsp:getProperty property="medizin_introduce" name="medizin" />
-					</div>
-					<div>
-						生境分布：<jsp:getProperty property="medizin_distribution"
-							name="medizin" />
-					</div>
-					<div>
-						采收加工：<jsp:getProperty property="medizin_collectionProcessing"
-							name="medizin" />
-					</div>
-					<%-- <div>
-						注意事项：<jsp:getProperty property="medizin_precautions"
-							name="medizin" />
-					</div>
-					<div>
-						化学成分：<jsp:getProperty property="medizin_chemicalComponent"
-							name="medizin" />
-					</div>
-					<div>
-						化学成分参考文献：<jsp:getProperty property="medizin_referencesChemical"
-							name="medizin" />
-					</div>
-					<div>
-						现代临床研究参考文献：<jsp:getProperty property="medizin_referencesClinic"
-							name="medizin" />
-					</div>
-					<div>
-						药理参考文献：<jsp:getProperty property="medizin_referencesPharmacology"
-							name="medizin" />
-					</div> --%>
-
-					<form action="modifySuccessServlet" method="post">
-						<input name="zhengming" type="hidden"
-							value="<jsp:getProperty property="medizin_name" name="medizin"/>" />
-						<input name="yiming" type="hidden"
-							value="<jsp:getProperty property="medizin_anotherName" name="medizin"/>">
-						<input name="yaoxing" type="hidden"
-							value="<jsp:getProperty property="medizin_property" name="medizin"/> " />
-						<input name="leibie" type="hidden"
-							value=<jsp:getProperty property="medizin_planCategory" name="medizin"/> />
-						<input name="yuanzhiwujieshao" type="hidden"
-							value="<jsp:getProperty property="medizin_introduce" name="medizin"/>" />
-						<input name="shengjingfenbu" type="hidden"
-							value="<jsp:getProperty property="medizin_distribution" name="medizin"/>" />
-						<input name="caijijiagong" type="hidden"
-							value="<jsp:getProperty property="medizin_collectionProcessing" name="medizin"/>" />
-						<input name="zhuyishixiang" type="hidden"
-							value="<jsp:getProperty property="medizin_collectionProcessing" name="medizin"/>" />
-						<input name="huaxuechengfen" type="hidden"
-							value="<jsp:getProperty property="medizin_chemicalComponent" name="medizin"/>" />
-						<input name="huaxuechengfencankaowenxian" type="hidden"
-							value="<jsp:getProperty property="medizin_referencesChemical" name="medizin"/>" />
-						<input name="xiandailinchuangyanjiucankaowenxian" type="hidden"
-							value="<jsp:getProperty property="medizin_referencesClinic" name="medizin"/>" />
-						<input name="yaolicankaowenxian" type="hidden"
-							value="<jsp:getProperty property="medizin_referencesPharmacology" name="medizin"/>" />
-						<input name="forSelect" type="hidden"
-							value='<jsp:getProperty property="medizin_forSelect" name="medizin"/>'>
-
-						<input type="button" name="back" value="修改"
-							onclick="javascript:history.go(-1);" /> <input type="submit"
-							value="确定">
-					</form>
-
+	<div>
+		假装这个是图：删除成功！
+		</div>
+		<button id="tj" type="button">返回</button>
+<!-- 		<button id="fh" type="button">返回首页</button> -->
+		<script type="text/javascript">
+<!--
+//-->
+			$("#tj").click(function(){
+				$(window).attr('location','QueryServlet');
+			})
+// 			$("#fh").click(function(){
+// 				$(window).attr('location','index.jsp');
+// 			})
+</script>
 
 
 

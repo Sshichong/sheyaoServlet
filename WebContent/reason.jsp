@@ -178,34 +178,8 @@ font-size:15px;
 				</div>
 
 				<div class="services">
-					<%
-						String leibie = (String) request.getAttribute("lb");
-					%>
-
-
-					<div>
-						畲族名：<jsp:getProperty property="medizin_name" name="medizin" />
-					</div>
-					<div>
-						异名：<jsp:getProperty property="medizin_anotherName" name="medizin" />
-					</div>
-					<div>
-						畲药药性：<jsp:getProperty property="medizin_property" name="medizin" />
-					</div>
-					<div>
-						植物类别：<%=leibie%>
-					</div>
-					<div>
-						原植物：<jsp:getProperty property="medizin_introduce" name="medizin" />
-					</div>
-					<div>
-						生境分布：<jsp:getProperty property="medizin_distribution"
-							name="medizin" />
-					</div>
-					<div>
-						采收加工：<jsp:getProperty property="medizin_collectionProcessing"
-							name="medizin" />
-					</div>
+				<form action="deletesyServlet" method="post">
+				删除理由：<input type="text" name="reason" />
 					<%-- <div>
 						注意事项：<jsp:getProperty property="medizin_precautions"
 							name="medizin" />
@@ -227,7 +201,7 @@ font-size:15px;
 							name="medizin" />
 					</div> --%>
 
-					<form action="modifySuccessServlet" method="post">
+					
 						<input name="zhengming" type="hidden"
 							value="<jsp:getProperty property="medizin_name" name="medizin"/>" />
 						<input name="yiming" type="hidden"

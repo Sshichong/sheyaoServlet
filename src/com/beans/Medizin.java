@@ -22,9 +22,37 @@ public class Medizin {
 	private String medizin_plantImg="";
 	private String medizin_forSelect="";
 	private String medizin_date;
+	private String medizin_deleteTag;
+	private String medizin_deleteReason;
 	
 	
 	
+	
+	
+	public String getMedizin_deleteTag() {
+		return medizin_deleteTag;
+	}
+
+
+
+	public void setMedizin_deleteTag(String medizin_deleteTag) {
+		this.medizin_deleteTag = medizin_deleteTag;
+	}
+
+
+
+	public String getMedizin_deleteReason() {
+		return medizin_deleteReason;
+	}
+
+
+
+	public void setMedizin_deleteReason(String medizin_deleteReason) {
+		this.medizin_deleteReason = medizin_deleteReason;
+	}
+
+
+
 	public String getMedizin_date() {
 		return medizin_date;
 	}

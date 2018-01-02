@@ -184,29 +184,29 @@ font-size:15px;
 
 
 					<div>
-						畲药名称：<jsp:getProperty property="medizin_name" name="medizin" />
+						畲族名：<jsp:getProperty property="medizin_name" name="medizin" />
 					</div>
 					<div>
-						别名：<jsp:getProperty property="medizin_anotherName" name="medizin" />
+						异名：<jsp:getProperty property="medizin_anotherName" name="medizin" />
 					</div>
 					<div>
-						药性：<jsp:getProperty property="medizin_property" name="medizin" />
+						畲药药性：<jsp:getProperty property="medizin_property" name="medizin" />
 					</div>
 					<div>
-						畲药类别：<%=leibie%>
+						植物类别：<%=leibie%>
 					</div>
 					<div>
-						原植物介绍：<jsp:getProperty property="medizin_introduce" name="medizin" />
+						原植物：<jsp:getProperty property="medizin_introduce" name="medizin" />
 					</div>
 					<div>
 						生境分布：<jsp:getProperty property="medizin_distribution"
 							name="medizin" />
 					</div>
 					<div>
-						采集加工：<jsp:getProperty property="medizin_collectionProcessing"
+						采收加工：<jsp:getProperty property="medizin_collectionProcessing"
 							name="medizin" />
 					</div>
-					<div>
+					<%-- <div>
 						注意事项：<jsp:getProperty property="medizin_precautions"
 							name="medizin" />
 					</div>
@@ -225,7 +225,7 @@ font-size:15px;
 					<div>
 						药理参考文献：<jsp:getProperty property="medizin_referencesPharmacology"
 							name="medizin" />
-					</div>
+					</div> --%>
 
 					<form action="InsertSyServlet1" method="post">
 						<input name="zhengming" type="hidden"
