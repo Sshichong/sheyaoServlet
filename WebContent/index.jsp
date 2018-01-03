@@ -9,13 +9,13 @@
 <style type="text/css">
 /* body{ */
 /* background-color:#DBDBDB; */
-/* } */
-  body {  
-   width: 100%; 
-   height:auto; 
-    background:url("images/beijing2.jpeg") no-repeat; 
-    background-size: 100%;  
-}  
+} 
+/*   body {   */
+/*    width: 100%;  */
+/*    height:auto;  */
+/*     background:url("images/beijing2.jpeg") no-repeat;  */
+/*     background-size: 100%;   */
+/* }   */
 
 </style></head>
 </head>
@@ -27,7 +27,7 @@
     <div id="center">
 				<jsp:include page="center.jsp" />      
     </div>
-	<div id="footer"class="footer">
+	<div id="footer">
 				<jsp:include page="footer.jsp" />  
 	</div>
 </div>

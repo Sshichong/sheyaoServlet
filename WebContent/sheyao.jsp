@@ -395,7 +395,13 @@ for(int i=0;i<vector.size();i++){
 						</div> --%>
 
 					<%}
-						}else if(qb!=null){%>
+						}else if(qb!=null){
+						DataProcess data =new DataProcess();
+						String sql1 ="SELECT * FROM medizin  ORDER BY Medizin_date DESC LIMIT 0 , 3";
+						Vector v=data.getData(sql1);
+// 						out.print(v);
+						
+						%>
 					<table border="1" style="width: 100%">
 						<col style="width: 7%" />
 						<!-- 畲药名 -->
@@ -421,20 +427,20 @@ for(int i=0;i<vector.size();i++){
 							<th>主要操作</th>
 						</tr>
 						<%
-							for (int i = qb.size() - 1; i >= qb.size() - 3; i--) {
-									Medizin m = qb.get(i);
+							for (int i=0;i<v.size();i++) {
+									Vector m =(Vector)v.get(i);
 						%>
 						<tr>
-							<td><%=m.getMedizin_name()%></td>
-							<td><%=m.getMedizin_anotherName()%></td>
-							<td><%=m.getMedizin_property()%></td>
-							<td><%=m.getMedizin_introduce()%></td>
-							<td><%=m.getMedizin_date()%></td>
-							<td><a href="QueryServlet?select=<%=m.getMedizin_name()%>"
+							<td><%=m.get(1)%></td>
+							<td><%=m.get(2)%></td>
+							<td><%=m.get(3)%></td>
+							<td><%=m.get(4)%></td>
+							<td><%=m.get(20)%></td>
+							<td><a href="QueryServlet?select=<%=m.get(1)%>"
 								target="_blank">详情</a>&nbsp;&nbsp;&nbsp;<a
-								href="modifyServlet?select=<%=m.getMedizin_name()%>"
+								href="modifyServlet?select=<%=m.get(1)%>"
 								target="_blank">修改</a>&nbsp;&nbsp;&nbsp;<a
-								href="deleteServlet?select=<%=m.getMedizin_name()%>">删除</a>&nbsp;&nbsp;&nbsp;<a>恢复</a></td>
+								href="deleteServlet?select=<%=m.get(1)%>">删除</a>&nbsp;&nbsp;&nbsp;<a>恢复</a></td>
 						</tr>
 
 						<%	

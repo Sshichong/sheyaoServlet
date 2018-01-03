@@ -42,33 +42,14 @@
 <body >
 <div class="center-div-top" id="cdt">
 <img alt="logo1" src="images/caobenti.jpg"class="cdti2">
-<img alt="logo" src="images/logo.png"class="cdti">
-<div class="xinwenout">
-<div class="xinweninnter"id="show"  >
-        <table width="100%"style="font-size:150%">  
-            <tbody>
-                <tr>  
-                    <td>新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻</td>  
-                </tr>  
-                <tr>  
-                    <td>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</td>  
-                </tr>
-                <tr>  
-                    <td>BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</td>  
-                </tr>    
-                <tr>  
-                    <td>CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC</td>  
-                </tr> 
-                 <tr>  
-                    <td>新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻</td>  
-                </tr>
-                     
-            </tbody>         
-        </table>  
-</div>  
+<div class="cdti">
+畲医药资源库管理
+</div>
+<div class="xianfang">
+<a href=#> <img alt="xianfang" src="images/xianfangdianci.PNG" ></a>
 </div>
 </div>
-<div   id="cdc">
+<div  class="cdc" id="cdc">
 <style>
             .pic1 .img1-2{display: none;}
             .pic1:hover .img1-1{display: none;}
@@ -88,7 +69,7 @@
 </style>
   <div  class="pic1"id="cdc1">
   <img class="img1-1 cdc1" src="images/y-t.png" />
- <a href="QueryServlet"> <img alt="yao" src="images/yao.png"class="cdc1 img1-2"></a>
+ <a href=#> <img alt="yao" src="images/yao.png"class="cdc1 img1-2"></a>
    </div>
    
    <div class="pic2" id="cdc2">
@@ -105,16 +86,54 @@
    <img class="img4-1 cdc4" src="images/t-t.png" />
    <a href=#><img alt="yi" src="images/tong.png"class="cdc4 img4-2"></a>
    </div>
+   
 </div>
 <div class="center-div-bottom" id="cdb">
 <input class="sou1" type="text"placeholder="学名、中文名、首字母">
  <input class="sou2" type="button" value="" />
 <br>
-<div class="wenzijieshao">
-畲医药是民族医药的重要组成部分，是畲民在其特定的历史条件和特殊的地理环境中，为求生存与繁衍而逐渐积累而成的医疗方法，它具有独特的疾病观、疾病分类法和特殊疗法，对某些疾病治疗有药到病除之效，具体有典型的民族色彩。畲族是个只有语言没有文字的少数民族，受政治、经济、文化、历史、地理等诸多因素影响，畲医药在民间流程的方式主要是口传身穿，而且不外传、传男不传女，导致不少宝贵的医疗经验失传。
-为开发利用畲医药资源服务于人类健康，畲医药资源数据库系统对已经出版的《中国畲族医药学》、《中国畲药学》等资料进行整合与采集，提供了包含？？类？？种畲药以及？？畲医民间处方，供广大畲医药爱好者查询使用。
 
+
+<div class="wenzijieshao">
+    畲医药是民族医药的重要组成部分，是畲民在其特定的历史条件和特殊的地理环境中，为求生存与繁衍而逐渐积累而成的医疗方法，它具有独特的疾病观、疾病分类法和特殊疗法，对某些疾病治疗有药到病除之效，具体有典型的民族色彩。
+    畲族是个只有语言没有文字的少数民族，受政治、经济、文化、历史、地理等诸多因素影响，畲医药在民间流程的方式主要是口传身穿，而且不外传、传男不传女，导致不少宝贵的医疗经验失传。
+为开发利用畲医药资源服务于人类健康，畲医药资源数据库系统对已经出版的《中国畲族医药学》、《中国畲药学》等资料进行整合与采集，提供了包含？？类？？种畲药以及？？畲医民间处方，供广大畲医药爱好者查询使用。
+</div>
+<!-- <div class="kepu">
+科普：
 </div>
 </div>
+<div class="xinwen">
+最新热点：
+
+</div> -->
+
+<div style="background-color: #eee;paddint-top:10px align="left top:145%;
+	left:20%;
+	position:absolute;
+	height:8px;
+	width:60%;
+    margin: 20px 0;"></div>
+<div class="wrapper">
+        <div class="panel panel-footer clearfix">
+            <div class="item">
+            <div>最新热点</div>
+			 <a href=#> 1</a><br>
+            <a href=#> 2</a><br>
+            <a href=#> 3</a><br>
+
+            <a href=#> more……</a><br>
+            </div>
+            <div class="item">
+            <div>知识科普
+            </div>
+			 <a href=#> 1</a><br>
+            <a href=#> 2</a><br>
+            <a href=#> 3</a><br>
+            <a href=#> more……</a><br>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>

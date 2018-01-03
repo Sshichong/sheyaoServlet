@@ -7,13 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
- <div class="xuanfu" id="xf">
+ <div class="xuanfu" id="xf" style="background:url('images/top.jpeg') ">
 		  <div class="fl searchbar" id="lef">
             <input id="txt_key" type="text" name="q" placeholder="学名、中文名、首字母"  class="field"  />
                     <input id="but_search" class="submit" type="button" value="" />
           </div>
           <div  id="cen">
-             <img src="images/logo.png"class="fl tubiao" />
+            
           </div>
           <div class="fl right" id="rig">
           <input id="dr" type="button" value="登录">
