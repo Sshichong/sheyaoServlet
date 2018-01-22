@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>畲医药资源库管理</title>
 <link rel="stylesheet" rev="stylesheet" href="css/shouyesuoyou.css" type="text/css" media="all" />
 <style type="text/css">
 /* body{ */

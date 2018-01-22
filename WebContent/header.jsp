@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>畲医药资源库管理</title>
 </head>
 <body>
  <div class="xuanfu" id="xf" style="background:url('images/top.jpeg') ">
@@ -12,10 +12,18 @@
             <input id="txt_key" type="text" name="q" placeholder="学名、中文名、首字母"  class="field"  />
                     <input id="but_search" class="submit" type="button" value="" />
           </div>
+  
+			<img alt="logo1" src="images/caobenti.jpg"class="cdti2">
+		<div class="cdti">
+			畲医药资源库管理
+
+			</div>
           <div  id="cen">
             
           </div>
+          
           <div class="fl right" id="rig">
+          
           <input id="dr" type="button" value="登录">
           <input id="zc" type="button" value="注册">
           </div>
